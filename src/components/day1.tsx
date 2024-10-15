@@ -306,31 +306,6 @@ $books = json_decode($jsonData, true);
 
   return (
     <motion.main className="p-4 container mx-auto">
-      <h1 className="text-2xl font-bold">
-        Exercise 1: Understanding Web Servers, URLs, PHP, and Building a Basic
-        Dynamic Webpage
-      </h1>
-      <h2 className="text-xl font-bold mt-2">Objective:</h2>
-      <p>
-        By the end of this session, students will understand the role of a web
-        server, how URLs work, the request-response cycle, the difference
-        between compiled and interpreted languages, and create a dynamic PHP
-        webpage. They will also learn to configure Apache (
-        <Code>httpd.conf</Code>) and PHP (<Code>php.ini</Code>
-        ), and work with the concept of virtual hosts (vhosts).
-      </p>
-      <h2 className="text-xl font-bold mt-2">Part 1: Theory</h2>
-      <h3 className="text-lg font-bold mt-2">1.1 What is a Web Server?</h3>
-      <p>
-        A web server is software that serves web content (HTML, CSS, JavaScript,
-        etc.) to users' browsers. It listens for HTTP requests from clients
-        (usually browsers) and responds with the requested resources, such as
-        web pages or files.
-      </p>
-      <p>
-        In our case, Apache (part of XAMPP) is the web server that processes
-        requests and returns PHP-generated web pages.
-      </p>
       <ul className="list-disc list-inside mt-2">
         <li>
           <strong>Apache</strong>: An open-source web server that handles HTTP
