@@ -8,7 +8,12 @@ export default function UnorderedList({
   inside: boolean;
 }) {
   return (
-    <ul className={cn("list-disc list-inside", inside ? "ml-6" : "")}>
+    <ul
+      className={cn(
+        "list-disc list-inside text-muted-foreground",
+        inside ? "ml-6" : ""
+      )}
+    >
       {children}
     </ul>
   );

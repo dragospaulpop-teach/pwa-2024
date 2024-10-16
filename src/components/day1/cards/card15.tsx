@@ -22,56 +22,48 @@ import {
 export default function Card15() {
   const { lightOrDark } = useTheme();
   const code = `<?php
-    // Set variables for dynamic content
-    $storeName = "John's Book Emporium";
-    $categories = [
-      "Fiction",
-      "Non-Fiction",
-      "Children's Books",
-      "Science Fiction",
-    ];
-    $currentTime = date("H");
+  // Set variables for dynamic content
+  $storeName = "John's Book Emporium";
+  $categories = ["Fiction", "Non-Fiction", "Children's Books", "Science Fiction"];
+  $currentTime = date("H");
 
-    // Determine greeting based on time of day
-    if ($currentTime < 12) {
-        $greeting = "Good morning";
-    } elseif ($currentTime < 18) {
-        $greeting = "Good afternoon";
-    } else {
-        $greeting = "Good evening";
-    }
-    ?>
+  // Determine greeting based on time of day
+  if ($currentTime < 12) {
+    $greeting = "Good morning";
+  } elseif ($currentTime < 18) {
+    $greeting = "Good afternoon";
+  } else {
+    $greeting = "Good evening";
+  }
+  ?>
 
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1.0"
-        />
-        <title>Welcome to <?php echo $storeName; ?></title>
-      </head>
-    <body>
-        <h1>
-          <?php
-            echo $greeting . ", welcome to " . $storeName;
-          ?>!
-        </h1>
-        <p>Here are some of our book categories:</p>
-        <ul>
-            <?php
-            // Loop through categories array
-            // and display each one
-            foreach ($categories as $category) {
-                echo "<li>" . $category . "</li>";
-            }
-            ?>
-        </ul>
-    </body>
-    </html>`;
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome to <?php echo $storeName; ?></title>
+    </head>
+  <body>
+    <h1>
+      <?php
+        echo $greeting . ", welcome to " . $storeName;
+      ?>!
+    </h1>
+    <p>Here are some of our book categories:</p>
+    <ul>
+      <?php
+      // Loop through categories array
+      // and display each one
+      foreach ($categories as $category) {
+        echo "<li>" . $category . "</li>";
+      }
+      ?>
+    </ul>
+  </body>
+  </html>`;
   return (
-    <Card>
+    <Card className="w-full max-w-full">
       <CardHeader>
         <CardTitle>
           <Title>Practice</Title>
@@ -91,12 +83,18 @@ export default function Card15() {
           <Badge variant="secondary">C:/xampp/htdocs/bookstore</Badge> folder.
         </Paragraph>
         <Alert>
-          <Lightbulb className="w-4 h-4 mr-2" />
+          <Lightbulb className="w-4 h-4 mr-2" color="#d97706" />
           <AlertTitle>Hint</AlertTitle>
           <AlertDescription>
             Use{" "}
             <Badge variant="secondary" className="cursor-pointer underline">
-              <a href="https://vscode.dev">vscode.dev</a>
+              <a
+                href="https://vscode.dev"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                vscode.dev
+              </a>
             </Badge>{" "}
             to manage your webiste's files. Click on the{" "}
             <Badge variant="secondary">Open folder</Badge> icon and give the app
@@ -118,6 +116,12 @@ export default function Card15() {
             {code}
           </SyntaxHighlighter>
         </ScrollArea>
+        <Paragraph>
+          Open your browser to{" "}
+          <Badge variant="secondary">http://bookstore.local</Badge>. You should
+          see a dynamic greeting based on the time of day and a list of book
+          categories.
+        </Paragraph>
       </CardContent>
     </Card>
   );

@@ -24,10 +24,10 @@ export default function Intro() {
       </CardHeader>
       <CardContent>
         <Paragraph>
-          By the end of this session, students will understand the role of a web
+          By the end of this session, you'll understand the role of a web
           server, how URLs work, the request-response cycle, the difference
           between compiled and interpreted languages, and create a dynamic PHP
-          webpage. They will also learn to configure Apache (
+          webpage. You'll also learn to configure Apache (
           <Badge variant="secondary">httpd.conf</Badge>) and PHP (
           <Badge variant="secondary">php.ini</Badge>
           ), and work with the concept of virtual hosts (vhosts).
