@@ -1,3 +1,15 @@
-export default function Paragraph({ children }: { children: React.ReactNode }) {
-  return <p className="text-lg text-muted-foreground my-4">{children}</p>;
+import { cn } from "@/lib/utils";
+
+export default function Paragraph({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <div className={cn("text-lg text-muted-foreground my-4", className)}>
+      {children}
+    </div>
+  );
 }

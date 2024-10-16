@@ -1,6 +1,6 @@
-import Code from "@/components/code";
 import Paragraph from "@/components/paragraph";
 import Title from "@/components/title";
+import { Badge } from "@/components/ui/badge";
 import {
   Card,
   CardContent,
@@ -12,12 +12,12 @@ import {
 
 export default function Intro() {
   return (
-    <Card className="bg-card">
+    <Card>
       <CardHeader>
         <CardTitle>
           <Title>
-            Exercise 1: Understanding Web Servers, URLs, PHP, and Building a
-            Basic Dynamic Webpage
+            Understanding Web Servers, URLs, PHP, and Building a Basic Dynamic
+            Webpage
           </Title>
         </CardTitle>
         <CardDescription></CardDescription>
@@ -28,7 +28,8 @@ export default function Intro() {
           server, how URLs work, the request-response cycle, the difference
           between compiled and interpreted languages, and create a dynamic PHP
           webpage. They will also learn to configure Apache (
-          <Code>httpd.conf</Code>) and PHP (<Code>php.ini</Code>
+          <Badge variant="secondary">httpd.conf</Badge>) and PHP (
+          <Badge variant="secondary">php.ini</Badge>
           ), and work with the concept of virtual hosts (vhosts).
         </Paragraph>
       </CardContent>
