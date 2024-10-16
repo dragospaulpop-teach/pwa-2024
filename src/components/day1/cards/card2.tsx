@@ -49,8 +49,7 @@ export default function Card2() {
           </Badge>
         </Paragraph>
         <Paragraph className="flex items-center text-xs">
-          <ScrollIcon className="w-3 h-3 mr-2" /> Scroll this area to see all
-          the parts of a URL.
+          <ScrollIcon className="w-3 h-3 mr-2" /> Scroll me
         </Paragraph>
         <ScrollArea className="h-52 mt-4">
           <Alert className="my-2">

@@ -1,6 +1,6 @@
+import Code from "@/components/code";
 import Paragraph from "@/components/paragraph";
 import Subtitle from "@/components/subtitle";
-import { useTheme } from "@/components/theme-provider";
 import Title from "@/components/title";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
@@ -12,17 +12,9 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import { Lightbulb } from "lucide-react";
-import SyntaxHighlighter from "react-syntax-highlighter";
-import {
-  atelierSulphurpoolDark,
-  atelierSulphurpoolLight,
-} from "react-syntax-highlighter/dist/esm/styles/hljs";
 
 export default function Card28() {
-  const { lightOrDark } = useTheme();
-
   const code = `<?php
 // Load the book data from the JSON file
 $jsonData = file_get_contents('books.json');
@@ -60,20 +52,7 @@ $books = json_decode($jsonData, true);
           inside your bookstore folder.
         </Paragraph>
 
-        <ScrollArea className="h-[200px]">
-          <SyntaxHighlighter
-            wrapLines={true}
-            showLineNumbers={true}
-            language="php"
-            style={
-              lightOrDark === "dark"
-                ? atelierSulphurpoolDark
-                : atelierSulphurpoolLight
-            }
-          >
-            {code}
-          </SyntaxHighlighter>
-        </ScrollArea>
+        <Code code={code} language="php" />
 
         <Alert className="mt-4">
           <Lightbulb className="w-4 h-4 mr-2" color="#d97706" />

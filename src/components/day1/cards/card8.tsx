@@ -26,12 +26,12 @@ export default function Card8() {
       </CardHeader>
       <CardContent>
         <Paragraph>
-          PHP’s configuration is done via the <Badge variant="secondary">php.ini</Badge> file, found
-          in the <Badge variant="secondary">php</Badge> folder of XAMPP.
+          PHP’s configuration is done via the{" "}
+          <Badge variant="secondary">php.ini</Badge> file, found in the{" "}
+          <Badge variant="secondary">php</Badge> folder of XAMPP.
         </Paragraph>
         <Paragraph className="flex items-center text-xs">
-          <ScrollIcon className="w-3 h-3 mr-2" /> Scroll this area to see some
-          of the most common PHP configuration settings.
+          <ScrollIcon className="w-3 h-3 mr-2" /> Scroll me
         </Paragraph>
         <ScrollArea className="h-52 mt-4">
           <Alert className="mt-4">

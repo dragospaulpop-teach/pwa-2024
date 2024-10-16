@@ -1,6 +1,6 @@
+import Code from "@/components/code";
 import Paragraph from "@/components/paragraph";
 import Subtitle from "@/components/subtitle";
-import { useTheme } from "@/components/theme-provider";
 import Title from "@/components/title";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
@@ -13,15 +13,9 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import SyntaxHighlighter from "react-syntax-highlighter";
-import {
-  atelierSulphurpoolDark,
-  atelierSulphurpoolLight,
-} from "react-syntax-highlighter/dist/esm/styles/hljs";
+import { ScrollIcon } from "lucide-react";
 
 export default function Card27() {
-  const { lightOrDark } = useTheme();
-
   const code = `[
   {
     "title": "The Great Gatsby",
@@ -79,20 +73,11 @@ export default function Card27() {
         <Paragraph>
           Create a new file called books.json inside your bookstore folder.
         </Paragraph>
-
+        <Paragraph className="flex items-center text-xs">
+          <ScrollIcon className="w-3 h-3 mr-2" /> Scroll me
+        </Paragraph>
         <ScrollArea className="h-[200px]">
-          <SyntaxHighlighter
-            wrapLines={true}
-            showLineNumbers={true}
-            language="json"
-            style={
-              lightOrDark === "dark"
-                ? atelierSulphurpoolDark
-                : atelierSulphurpoolLight
-            }
-          >
-            {code}
-          </SyntaxHighlighter>
+          <Code code={code} language="json" />
         </ScrollArea>
 
         <Alert className="mt-4">

@@ -1,6 +1,6 @@
+import Code from "@/components/code";
 import Paragraph from "@/components/paragraph";
 import Subtitle from "@/components/subtitle";
-import { useTheme } from "@/components/theme-provider";
 import Title from "@/components/title";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
@@ -13,16 +13,9 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Lightbulb } from "lucide-react";
-import SyntaxHighlighter from "react-syntax-highlighter";
-import {
-  atelierSulphurpoolDark,
-  atelierSulphurpoolLight,
-} from "react-syntax-highlighter/dist/esm/styles/hljs";
+import { Lightbulb, ScrollIcon } from "lucide-react";
 
 export default function Card26() {
-  const { lightOrDark } = useTheme();
-
   const code = {
     books: `<?php
   $books = [
@@ -86,36 +79,23 @@ export default function Card26() {
           <Badge variant="secondary">books.php</Badge> inside your bookstore
           directory and move the books array to it.
         </Paragraph>
-
+        <Paragraph className="flex items-center text-xs">
+          <ScrollIcon className="w-3 h-3 mr-2" /> Scroll me
+        </Paragraph>
         <ScrollArea className="h-[200px]">
-          <SyntaxHighlighter
-            wrapLines={true}
-            showLineNumbers={true}
-            language="php"
-            style={
-              lightOrDark === "dark"
-                ? atelierSulphurpoolDark
-                : atelierSulphurpoolLight
-            }
-          >
-            {code.books}
-          </SyntaxHighlighter>
+          <Code code={code.books} language="php" />
         </ScrollArea>
 
-        <Paragraph>Include the books.php file inside your index.php:</Paragraph>
+        <Paragraph>
+          Include the <Badge variant="secondary">books.php</Badge> file inside
+          your index.php:
+        </Paragraph>
 
-        <SyntaxHighlighter
-          wrapLines={true}
-          showLineNumbers={true}
-          style={
-            lightOrDark === "dark"
-              ? atelierSulphurpoolDark
-              : atelierSulphurpoolLight
-          }
-        >
-          {code.include}
-        </SyntaxHighlighter>
+        <Code code={code.include} language="php" />
 
+        <Paragraph className="flex items-center text-xs">
+          <ScrollIcon className="w-3 h-3 mr-2" /> Scroll me
+        </Paragraph>
         <ScrollArea className="h-[200px]">
           <Alert className="mt-4">
             <Lightbulb className="w-4 h-4 mr-2" color="#d97706" />

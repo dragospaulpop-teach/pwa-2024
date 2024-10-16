@@ -1,6 +1,6 @@
+import Code from "@/components/code";
 import Paragraph from "@/components/paragraph";
 import Subtitle from "@/components/subtitle";
-import { useTheme } from "@/components/theme-provider";
 import Title from "@/components/title";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
@@ -12,17 +12,9 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { BookOpen } from "lucide-react";
-import SyntaxHighlighter from "react-syntax-highlighter";
-
-import {
-  atelierSulphurpoolDark,
-  atelierSulphurpoolLight,
-} from "react-syntax-highlighter/dist/esm/styles/hljs";
+import { BookOpen, ScrollIcon } from "lucide-react";
 
 export default function Card19() {
-  const { lightOrDark } = useTheme();
-
   const code = `<h2>Our Featured Books</h2>
 <div class="book-list">
   <?php
@@ -59,18 +51,11 @@ export default function Card19() {
           Update your <Badge variant="outline">index.php</Badge> to look like
           this:
         </Paragraph>
+        <Paragraph className="flex items-center text-xs">
+          <ScrollIcon className="w-3 h-3 mr-2" /> Scroll me
+        </Paragraph>
         <ScrollArea className="h-[300px]">
-          <SyntaxHighlighter
-            wrapLines={true}
-            showLineNumbers={true}
-            style={
-              lightOrDark === "dark"
-                ? atelierSulphurpoolDark
-                : atelierSulphurpoolLight
-            }
-          >
-            {code}
-          </SyntaxHighlighter>
+          <Code code={code} language="php" />
         </ScrollArea>
         <Alert className="mt-4">
           <BookOpen className="w-4 h-4 mr-2" />

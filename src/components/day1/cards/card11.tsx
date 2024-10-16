@@ -1,6 +1,7 @@
+import Code from "@/components/code";
 import Paragraph from "@/components/paragraph";
 import Subtitle from "@/components/subtitle";
-import { useTheme } from "@/components/theme-provider";
+
 import Title from "@/components/title";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -10,14 +11,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import SyntaxHighlighter from "react-syntax-highlighter";
-import {
-  atelierSulphurpoolDark,
-  atelierSulphurpoolLight,
-} from "react-syntax-highlighter/dist/esm/styles/hljs";
 
 export default function Card11() {
-  const { lightOrDark } = useTheme();
   const code = `
   <VirtualHost *:80>
       ServerAdmin webmaster@bookstore.local
@@ -52,15 +47,7 @@ export default function Card11() {
         <Paragraph>
           Below any existing content, add this configuration for your project:
         </Paragraph>
-        <SyntaxHighlighter
-          style={
-            lightOrDark === "dark"
-              ? atelierSulphurpoolDark
-              : atelierSulphurpoolLight
-          }
-        >
-          {code}
-        </SyntaxHighlighter>
+        <Code code={code} language="apache" />
         <Paragraph>
           This block tells Apache that requests for{" "}
           <Badge variant="secondary">bookstore.local</Badge> should be served

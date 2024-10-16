@@ -1,6 +1,6 @@
+import Code from "@/components/code";
 import Paragraph from "@/components/paragraph";
 import Subtitle from "@/components/subtitle";
-import { useTheme } from "@/components/theme-provider";
 import Title from "@/components/title";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
@@ -12,17 +12,9 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
-
-import SyntaxHighlighter from "react-syntax-highlighter";
-
-import {
-  atelierSulphurpoolDark,
-  atelierSulphurpoolLight,
-} from "react-syntax-highlighter/dist/esm/styles/hljs";
+import { ScrollIcon } from "lucide-react";
 
 export default function Card20() {
-  const { lightOrDark } = useTheme();
-
   const code = `<style>
   .book-list {
     display: flex;
@@ -55,19 +47,11 @@ export default function Card20() {
           the book list.
         </Paragraph>
 
+        <Paragraph className="flex items-center text-xs">
+          <ScrollIcon className="w-3 h-3 mr-2" /> Scroll me
+        </Paragraph>
         <ScrollArea className="h-[300px]">
-          <SyntaxHighlighter
-            language="css"
-            wrapLines={true}
-            showLineNumbers={true}
-            style={
-              lightOrDark === "dark"
-                ? atelierSulphurpoolDark
-                : atelierSulphurpoolLight
-            }
-          >
-            {code}
-          </SyntaxHighlighter>
+          <Code code={code} language="css" />
         </ScrollArea>
         <Alert className="mt-4">
           <AlertTitle>Note</AlertTitle>

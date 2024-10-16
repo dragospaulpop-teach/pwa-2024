@@ -12,6 +12,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { ScrollIcon } from "lucide-react";
 
 export default function Card3() {
   return (
@@ -32,6 +33,9 @@ export default function Card3() {
           <Badge variant="secondary">Response</Badge>.
         </Paragraph>
         <Paragraph>A request is made up of the following parts:</Paragraph>
+        <Paragraph className="flex items-center text-xs">
+          <ScrollIcon className="w-3 h-3 mr-2" /> Scroll me
+        </Paragraph>
         <ScrollArea className="h-32 mt-4">
           <Alert className="my-2">
             <AlertTitle>Method</AlertTitle>
@@ -60,6 +64,9 @@ export default function Card3() {
           </Alert>
         </ScrollArea>
         <Paragraph>A response is made up of the following parts:</Paragraph>
+        <Paragraph className="flex items-center text-xs">
+          <ScrollIcon className="w-3 h-3 mr-2" /> Scroll me
+        </Paragraph>
         <ScrollArea className="h-32 mt-4">
           <Alert className="my-2">
             <AlertTitle>Status Code</AlertTitle>

@@ -32,8 +32,7 @@ export default function Card7() {
           <Badge variant="secondary">apache\conf</Badge>.
         </Paragraph>
         <Paragraph className="flex items-center text-xs">
-          <ScrollIcon className="w-3 h-3 mr-2" /> Scroll this area to see some
-          of the most common Apache configuration settings.
+          <ScrollIcon className="w-3 h-3 mr-2" /> Scroll me
         </Paragraph>
         <ScrollArea className="h-52 mt-4">
           <Alert className="mt-4">
