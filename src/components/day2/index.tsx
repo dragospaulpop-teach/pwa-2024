@@ -3,7 +3,9 @@ import Card2 from "@/components/day2/cards/card2";
 import Card3 from "@/components/day2/cards/card3";
 import Card4 from "@/components/day2/cards/card4";
 import Card5 from "@/components/day2/cards/card5";
+import Card6 from "@/components/day2/cards/card6";
 import Intro from "@/components/day2/cards/intro";
+import Outro from "@/components/day2/cards/outro";
 import {
   Carousel,
   CarouselContent,
@@ -13,7 +15,6 @@ import {
   type CarouselApi,
 } from "@/components/ui/carousel";
 import { useEffect, useState } from "react";
-import Outro from "./cards/outro";
 
 export default function Day2() {
   const [api, setApi] = useState<CarouselApi>();
@@ -64,6 +65,9 @@ export default function Day2() {
           </CarouselItem>
           <CarouselItem className="flex justify-center items-center">
             <Card5 />
+          </CarouselItem>
+          <CarouselItem className="flex justify-center items-center">
+            <Card6 />
           </CarouselItem>
           <CarouselItem className="flex justify-center items-center">
             <Outro />

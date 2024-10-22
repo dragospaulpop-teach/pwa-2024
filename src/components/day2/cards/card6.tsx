@@ -71,6 +71,19 @@ export default function Card1() {
             </li>
           </UnorderedList>
         </Paragraph>
+        <Paragraph className="border-l-4 p-4 bg-secondary border-primary">
+          <strong>Task 5: Work with the query string</strong>
+          <UnorderedList inside>
+            <li>
+              Try to add another option to the query string to filter books by
+              title. Do this by adding an{" "}
+              <Badge variant="secondary">
+                &lt;input type="text" name="title"&gt;
+              </Badge>{" "}
+              field to your form.
+            </li>
+          </UnorderedList>
+        </Paragraph>
       </CardContent>
       <CardFooter></CardFooter>
     </Card>

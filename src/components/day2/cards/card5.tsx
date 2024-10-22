@@ -77,6 +77,18 @@ export default function Card1() {
           <BookOpen className="w-4 h-4 mr-2" />
           <AlertTitle>Note</AlertTitle>
           <AlertDescription>
+            The <Badge variant="secondary">name</Badge> attribute on the{" "}
+            <Badge variant="secondary">select</Badge> element is used to
+            identify the form data when it’s submitted. You can see that the
+            attribute value (<Badge variant="secondary">category</Badge>) is the
+            same as the option name in the query string and the index name in
+            the <Badge variant="secondary">$_GET</Badge> array.
+          </AlertDescription>
+        </Alert>
+        <Alert className="mt-4">
+          <BookOpen className="w-4 h-4 mr-2" />
+          <AlertTitle>Note</AlertTitle>
+          <AlertDescription>
             When the user selects a category and submits the form, they’ll be
             redirected to{" "}
             <Badge variant="secondary">
