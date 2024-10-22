@@ -57,7 +57,7 @@ export default function Day1() {
     });
   }, [api]);
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
+    <div className="flex flex-col items-center justify-center h-[calc(100vh-56px-36px-10px)]">
       <div className="flex gap-2 mb-4 w-full">
         {Array.from({ length: count }).map((_, index) => (
           <div
@@ -69,7 +69,7 @@ export default function Day1() {
           />
         ))}
       </div>
-      <Carousel className="w-full max-w-2xl" setApi={setApi}>
+      <Carousel className="w-full max-w-[calc(100%-200px)]" setApi={setApi}>
         <CarouselContent>
           <CarouselItem className="flex justify-center items-center">
             <Intro />
