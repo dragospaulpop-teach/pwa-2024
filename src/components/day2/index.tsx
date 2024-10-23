@@ -34,7 +34,7 @@ export default function Day2() {
     });
   }, [api]);
   return (
-    <div className="flex flex-col items-center justify-center h-[calc(100vh-56px-36px-10px)]">
+    <div className="flex flex-col items-center justify-center">
       <div className="flex gap-2 mb-4 w-full">
         {Array.from({ length: count }).map((_, index) => (
           <div
