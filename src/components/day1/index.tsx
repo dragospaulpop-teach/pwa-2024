@@ -57,7 +57,7 @@ export default function Day1() {
     });
   }, [api]);
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
+    <div className="flex flex-col items-center justify-center min-h-0 overflow-y-auto">
       <div className="flex gap-2 mb-4 w-full">
         {Array.from({ length: count }).map((_, index) => (
           <div
@@ -69,99 +69,102 @@ export default function Day1() {
           />
         ))}
       </div>
-      <Carousel className="w-full max-w-2xl" setApi={setApi}>
-        <CarouselContent>
-          <CarouselItem className="flex justify-center items-center">
+      <Carousel
+        className="w-full max-w-[calc(100%-200px)] min-h-0 h-full flex-grow "
+        setApi={setApi}
+      >
+        <CarouselContent className="min-h-0 h-full">
+          <CarouselItem className="flex justify-center items-center min-h-0 overflow-y-auto">
             <Intro />
           </CarouselItem>
-          <CarouselItem className="flex justify-center items-center">
+          <CarouselItem className="flex justify-center items-center min-h-0 overflow-y-auto">
             <Card1 />
           </CarouselItem>
-          <CarouselItem className="flex justify-center items-center">
+          <CarouselItem className="flex justify-center items-center min-h-0 overflow-y-auto">
             <Card2 />
           </CarouselItem>
-          <CarouselItem className="flex justify-center items-center">
+          <CarouselItem className="flex justify-center items-center min-h-0 overflow-y-auto">
             <Card3 />
           </CarouselItem>
-          <CarouselItem className="flex justify-center items-center">
+          <CarouselItem className="flex justify-center items-center min-h-0 overflow-y-auto">
             <Card4 />
           </CarouselItem>
-          <CarouselItem className="flex justify-center items-center">
+          <CarouselItem className="flex justify-center items-center min-h-0 overflow-y-auto">
             <Card5 />
           </CarouselItem>
-          <CarouselItem className="flex justify-center items-center">
+          <CarouselItem className="flex justify-center items-center min-h-0 overflow-y-auto">
             <Card6 />
           </CarouselItem>
-          <CarouselItem className="flex justify-center items-center">
+          <CarouselItem className="flex justify-center items-center min-h-0 overflow-y-auto">
             <Card7 />
           </CarouselItem>
-          <CarouselItem className="flex justify-center items-center">
+          <CarouselItem className="flex justify-center items-center min-h-0 overflow-y-auto">
             <Card8 />
           </CarouselItem>
-          <CarouselItem className="flex justify-center items-center">
+          <CarouselItem className="flex justify-center items-center min-h-0 overflow-y-auto">
             <Card9 />
           </CarouselItem>
-          <CarouselItem className="flex justify-center items-center">
+          <CarouselItem className="flex justify-center items-center min-h-0 overflow-y-auto">
             <Card10 />
           </CarouselItem>
-          <CarouselItem className="flex justify-center items-center">
+          <CarouselItem className="flex justify-center items-center min-h-0 overflow-y-auto">
             <Card11 />
           </CarouselItem>
-          <CarouselItem className="flex justify-center items-center">
+          <CarouselItem className="flex justify-center items-center min-h-0 overflow-y-auto">
             <Card12 />
           </CarouselItem>
-          <CarouselItem className="flex justify-center items-center">
+          <CarouselItem className="flex justify-center items-center min-h-0 overflow-y-auto">
             <Card13 />
           </CarouselItem>
-          <CarouselItem className="flex justify-center items-center">
+          <CarouselItem className="flex justify-center items-center min-h-0 overflow-y-auto">
             <Card14 />
           </CarouselItem>
-          <CarouselItem className="flex justify-center items-center">
+          <CarouselItem className="flex justify-center items-center min-h-0 overflow-y-auto">
             <Card15 />
           </CarouselItem>
-          <CarouselItem className="flex justify-center items-center">
+          <CarouselItem className="flex justify-center items-center min-h-0 overflow-y-auto">
             <Card16 />
           </CarouselItem>
-          <CarouselItem className="flex justify-center items-center">
+          <CarouselItem className="flex justify-center items-center min-h-0 overflow-y-auto">
             <Card17 />
           </CarouselItem>
-          <CarouselItem className="flex justify-center items-center">
+          <CarouselItem className="flex justify-center items-center min-h-0 overflow-y-auto">
             <Card18 />
           </CarouselItem>
-          <CarouselItem className="flex justify-center items-center">
+          <CarouselItem className="flex justify-center items-center min-h-0 overflow-y-auto">
             <Card19 />
           </CarouselItem>
-          <CarouselItem className="flex justify-center items-center">
+          <CarouselItem className="flex justify-center items-center min-h-0 overflow-y-auto">
             <Card20 />
           </CarouselItem>
-          <CarouselItem className="flex justify-center items-center">
+          <CarouselItem className="flex justify-center items-center min-h-0 overflow-y-auto">
             <Card21 />
           </CarouselItem>
-          <CarouselItem className="flex justify-center items-center">
+          <CarouselItem className="flex justify-center items-center min-h-0 overflow-y-auto">
             <Card22 />
           </CarouselItem>
-          <CarouselItem className="flex justify-center items-center">
+          <CarouselItem className="flex justify-center items-center min-h-0 overflow-y-auto">
             <Card23 />
           </CarouselItem>
-          <CarouselItem className="flex justify-center items-center">
+          <CarouselItem className="flex justify-center items-center min-h-0 overflow-y-auto">
             <Card24 />
           </CarouselItem>
-          <CarouselItem className="flex justify-center items-center">
+          <CarouselItem className="flex justify-center items-center min-h-0 overflow-y-auto">
             <Card25 />
           </CarouselItem>
-          <CarouselItem className="flex justify-center items-center">
+          <CarouselItem className="flex justify-center items-center min-h-0 overflow-y-auto">
             <Card26 />
           </CarouselItem>
-          <CarouselItem className="flex justify-center items-center">
+          <CarouselItem className="flex justify-center items-center min-h-0 overflow-y-auto">
             <Card27 />
           </CarouselItem>
-          <CarouselItem className="flex justify-center items-center">
+          <CarouselItem className="flex justify-center items-center min-h-0 overflow-y-auto">
             <Card28 />
           </CarouselItem>
-          <CarouselItem className="flex justify-center items-center">
+          <CarouselItem className="flex justify-center items-center min-h-0 overflow-y-auto">
             <Card29 />
           </CarouselItem>
-          <CarouselItem className="flex justify-center items-center">
+          <CarouselItem className="flex justify-center items-center min-h-0 overflow-y-auto">
             <Outro />
           </CarouselItem>
         </CarouselContent>
