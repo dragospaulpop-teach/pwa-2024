@@ -1,12 +1,14 @@
 name: Deploy to DigitalOcean
+
 on:
   push:
-    branches: [ master ]  # or whatever your main branch is called
+    branches: [ master ]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment: production  # You can create different environments like staging, production
+    environment: production
+
     steps:
       - name: Deploy to DigitalOcean droplet via SSH
         uses: appleboy/ssh-action@master
@@ -15,6 +17,9 @@ jobs:
           username: ${{ secrets.DROPLET_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
+            set -e  # Exit immediately if a command exits with a non-zero status
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
             cd /var/www/pwa.dragos.club
             git pull origin master
             rm -rf node_modules
