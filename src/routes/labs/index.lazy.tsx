@@ -118,11 +118,15 @@ function Labs() {
           <Separator orientation="vertical" className="h-4" />
           <p className="text-xs text-muted-foreground">
             Photo by{" "}
-            <a href="https://unsplash.com/@trnavskauni?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">
+            <a
+              href="https://unsplash.com/@trnavskauni?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash"
+              target="_blank">
               Trnava University
             </a>{" "}
             on{" "}
-            <a href="https://unsplash.com/photos/gold-and-blue-trophy-on-white-table-SwCMZwrhQm8?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">
+            <a
+              href="https://unsplash.com/photos/gold-and-blue-trophy-on-white-table-SwCMZwrhQm8?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash"
+              target="_blank">
               Unsplash
             </a>
           </p>

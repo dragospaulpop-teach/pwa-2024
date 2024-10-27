@@ -163,6 +163,22 @@ const resources: Resources = {
         opacity: 0.05,
       },
     },
+    {
+      id: "the-first-browser-war",
+      title: "The First Browser War",
+      description:
+        "A comic I made with AI image generation about the first browser war.",
+      image: "/resources/the-first-browser-war/bg.jpg",
+      link: "/resources/the-first-browser-war",
+      target: "_self",
+      type: "article",
+      label: "Read comic",
+      style: {
+        scale: 0.95,
+        y: Math.random() * 1500 + 250,
+        opacity: 0.05,
+      },
+    },
   ],
 };
 
@@ -275,11 +291,15 @@ function Resources() {
           <Separator orientation="vertical" className="h-4" />
           <p className="text-xs text-muted-foreground">
             Photo by{" "}
-            <a href="https://unsplash.com/@vishwanth07?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">
+            <a
+              href="https://unsplash.com/@vishwanth07?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash"
+              target="_blank">
               Vishwanth Pindiboina
             </a>{" "}
             on{" "}
-            <a href="https://unsplash.com/photos/a-large-display-of-books-lOPp5d6Wo3M?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">
+            <a
+              href="https://unsplash.com/photos/a-large-display-of-books-lOPp5d6Wo3M?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash"
+              target="_blank">
               Unsplash
             </a>
           </p>

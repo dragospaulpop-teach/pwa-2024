@@ -386,23 +386,33 @@ function Index() {
           <Separator orientation="vertical" className="h-4" />
           <p className="text-center text-xs text-muted-foreground">
             Photos by{" "}
-            <a href="https://unsplash.com/@chen93?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">
+            <a
+              href="https://unsplash.com/@chen93?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash"
+              target="_blank">
               Chen
             </a>
             {", "}
-            <a href="https://unsplash.com/@luiskcortes?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">
+            <a
+              href="https://unsplash.com/@luiskcortes?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash"
+              target="_blank">
               Luis Cortés
             </a>
             {", "}
-            <a href="https://unsplash.com/@trnavskauni?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">
+            <a
+              href="https://unsplash.com/@trnavskauni?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash"
+              target="_blank">
               Trnava University
             </a>
             {", and "}
-            <a href="https://unsplash.com/@vishwanth07?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">
+            <a
+              href="https://unsplash.com/@vishwanth07?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash"
+              target="_blank">
               Vishwanth Pindiboina
             </a>{" "}
             on{" "}
-            <a href="https://unsplash.com/photos/a-desk-with-a-computer-and-speakers-on-it-Qtu3hGinLF8?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">
+            <a
+              href="https://unsplash.com/photos/a-desk-with-a-computer-and-speakers-on-it-Qtu3hGinLF8?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash"
+              target="_blank">
               Unsplash
             </a>
           </p>

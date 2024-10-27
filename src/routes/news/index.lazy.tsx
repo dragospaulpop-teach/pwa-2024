@@ -96,8 +96,14 @@ function News() {
           </p>
           <Separator orientation="vertical" className="h-4" />
           <p className="text-xs text-muted-foreground">
-            Photo by <a href="https://unsplash.com/@luiskcortes">Luis Cortés</a>{" "}
-            on <a href="https://unsplash.com/photos/DRL63jJ0L2Y">Unsplash</a>
+            Photo by{" "}
+            <a href="https://unsplash.com/@luiskcortes" target="_blank">
+              Luis Cortés
+            </a>{" "}
+            on{" "}
+            <a href="https://unsplash.com/photos/DRL63jJ0L2Y" target="_blank">
+              Unsplash
+            </a>
           </p>
         </footer>
       </div>

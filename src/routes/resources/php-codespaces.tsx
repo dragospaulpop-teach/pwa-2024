@@ -10,6 +10,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
 import { createFileRoute } from "@tanstack/react-router";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { AlertCircle } from "lucide-react";
@@ -194,6 +195,15 @@ function Codespaces() {
             </div>
           </section>
         </main>
+        <footer className="flex w-full shrink-0 flex-col items-center gap-2 bg-background/25 px-4 py-6 sm:flex-row md:px-6">
+          <p className="text-xs text-muted-foreground">
+            © 2024 Dragos-Paul Pop
+          </p>
+          <Separator orientation="vertical" className="h-4" />
+          <p className="text-xs text-muted-foreground">
+            Photo is actually a screenshot from the Codespaces homepage.
+          </p>
+        </footer>
       </div>
     </div>
   );

@@ -13,6 +13,7 @@ import { createFileRoute } from '@tanstack/react-router'
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as ResourcesTheFirstBrowserWarImport } from './routes/resources/the-first-browser-war'
 import { Route as ResourcesPhpCodespacesImport } from './routes/resources/php-codespaces'
 
 // Create Virtual Routes
@@ -60,6 +61,13 @@ const LabsIndexLazyRoute = LabsIndexLazyImport.update({
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/labs/index.lazy').then((d) => d.Route))
 
+const ResourcesTheFirstBrowserWarRoute =
+  ResourcesTheFirstBrowserWarImport.update({
+    id: '/resources/the-first-browser-war',
+    path: '/resources/the-first-browser-war',
+    getParentRoute: () => rootRoute,
+  } as any)
+
 const ResourcesPhpCodespacesRoute = ResourcesPhpCodespacesImport.update({
   id: '/resources/php-codespaces',
   path: '/resources/php-codespaces',
@@ -90,6 +98,13 @@ declare module '@tanstack/react-router' {
       path: '/resources/php-codespaces'
       fullPath: '/resources/php-codespaces'
       preLoaderRoute: typeof ResourcesPhpCodespacesImport
+      parentRoute: typeof rootRoute
+    }
+    '/resources/the-first-browser-war': {
+      id: '/resources/the-first-browser-war'
+      path: '/resources/the-first-browser-war'
+      fullPath: '/resources/the-first-browser-war'
+      preLoaderRoute: typeof ResourcesTheFirstBrowserWarImport
       parentRoute: typeof rootRoute
     }
     '/labs/': {
@@ -135,6 +150,7 @@ declare module '@tanstack/react-router' {
 export interface FileRoutesByFullPath {
   '/': typeof IndexLazyRoute
   '/resources/php-codespaces': typeof ResourcesPhpCodespacesRoute
+  '/resources/the-first-browser-war': typeof ResourcesTheFirstBrowserWarRoute
   '/labs': typeof LabsIndexLazyRoute
   '/news': typeof NewsIndexLazyRoute
   '/resources': typeof ResourcesIndexLazyRoute
@@ -145,6 +161,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexLazyRoute
   '/resources/php-codespaces': typeof ResourcesPhpCodespacesRoute
+  '/resources/the-first-browser-war': typeof ResourcesTheFirstBrowserWarRoute
   '/labs': typeof LabsIndexLazyRoute
   '/news': typeof NewsIndexLazyRoute
   '/resources': typeof ResourcesIndexLazyRoute
@@ -156,6 +173,7 @@ export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexLazyRoute
   '/resources/php-codespaces': typeof ResourcesPhpCodespacesRoute
+  '/resources/the-first-browser-war': typeof ResourcesTheFirstBrowserWarRoute
   '/labs/': typeof LabsIndexLazyRoute
   '/news/': typeof NewsIndexLazyRoute
   '/resources/': typeof ResourcesIndexLazyRoute
@@ -168,6 +186,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/resources/php-codespaces'
+    | '/resources/the-first-browser-war'
     | '/labs'
     | '/news'
     | '/resources'
@@ -177,6 +196,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/resources/php-codespaces'
+    | '/resources/the-first-browser-war'
     | '/labs'
     | '/news'
     | '/resources'
@@ -186,6 +206,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/resources/php-codespaces'
+    | '/resources/the-first-browser-war'
     | '/labs/'
     | '/news/'
     | '/resources/'
@@ -197,6 +218,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexLazyRoute: typeof IndexLazyRoute
   ResourcesPhpCodespacesRoute: typeof ResourcesPhpCodespacesRoute
+  ResourcesTheFirstBrowserWarRoute: typeof ResourcesTheFirstBrowserWarRoute
   LabsIndexLazyRoute: typeof LabsIndexLazyRoute
   NewsIndexLazyRoute: typeof NewsIndexLazyRoute
   ResourcesIndexLazyRoute: typeof ResourcesIndexLazyRoute
@@ -207,6 +229,7 @@ export interface RootRouteChildren {
 const rootRouteChildren: RootRouteChildren = {
   IndexLazyRoute: IndexLazyRoute,
   ResourcesPhpCodespacesRoute: ResourcesPhpCodespacesRoute,
+  ResourcesTheFirstBrowserWarRoute: ResourcesTheFirstBrowserWarRoute,
   LabsIndexLazyRoute: LabsIndexLazyRoute,
   NewsIndexLazyRoute: NewsIndexLazyRoute,
   ResourcesIndexLazyRoute: ResourcesIndexLazyRoute,
@@ -228,6 +251,7 @@ export const routeTree = rootRoute
       "children": [
         "/",
         "/resources/php-codespaces",
+        "/resources/the-first-browser-war",
         "/labs/",
         "/news/",
         "/resources/",
@@ -240,6 +264,9 @@ export const routeTree = rootRoute
     },
     "/resources/php-codespaces": {
       "filePath": "resources/php-codespaces.tsx"
+    },
+    "/resources/the-first-browser-war": {
+      "filePath": "resources/the-first-browser-war.tsx"
     },
     "/labs/": {
       "filePath": "labs/index.lazy.tsx"
