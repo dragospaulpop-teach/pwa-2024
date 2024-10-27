@@ -61,6 +61,22 @@ const resources: Resources = {
         opacity: 0.05,
       },
     },
+    {
+      id: "roadmap.sh",
+      title: "Roadmap.sh",
+      description:
+        "Great resource to help you plan your learning path as a developer and track your progress. You'll find loads of roadmaps here, I linked to the Backend one for obvious reasons. Pick any and start learning. Check them all out and build your knowledge.",
+      image: "/resources/roadmaps.png",
+      link: "https://roadmap.sh/backend",
+      target: "_blank",
+      type: "docs",
+      label: "Go to resource",
+      style: {
+        scale: 0.95,
+        y: Math.random() * 1500 + 250,
+        opacity: 0.05,
+      },
+    },
   ],
   videos: [
     {
