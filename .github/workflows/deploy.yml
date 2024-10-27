@@ -1,0 +1,22 @@
+name: Deploy to DigitalOcean
+on:
+  push:
+    branches: [ master ]  # or whatever your main branch is called
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: production  # You can create different environments like staging, production
+    steps:
+      - name: Deploy to DigitalOcean droplet via SSH
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.DROPLET_HOST }}
+          username: ${{ secrets.DROPLET_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd /var/www/pwa.dragos.club
+            git pull origin master
+            rm -rf node_modules
+            npm install
+            npm run build
