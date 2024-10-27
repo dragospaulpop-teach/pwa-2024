@@ -3,11 +3,12 @@ import {
   Card,
   CardContent,
   CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { createLazyFileRoute } from "@tanstack/react-router";
+import { createLazyFileRoute, Link } from "@tanstack/react-router";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import { MonitorPlayIcon } from "lucide-react";
 import { useRef } from "react";
@@ -27,7 +28,7 @@ const news = [
     }),
     link: "https://www.youtube.com/watch?v=3dgUiF2a3pM",
     type: "video",
-    label: "Watch the video",
+    label: "Watch video",
     style: {
       scale: 0.95,
       y: Math.random() * 1500 + 250,
@@ -160,20 +161,23 @@ function NewsItem({ item }: { item: (typeof news)[number] }) {
         y: item.style.y,
         opacity: item.style.opacity,
       }}>
-      <Card className="border-1 relative rounded-2xl border-opacity-10 bg-card/75 shadow-md dark:bg-black/30">
+      <Card className="border-1 relative flex h-full flex-col rounded-2xl border-opacity-10 bg-card/75 shadow-md dark:bg-black/30">
         <CardHeader>
           <CardTitle>{item.title}</CardTitle>
           <CardDescription>{item.published}</CardDescription>
         </CardHeader>
-        <CardContent>
+        <CardContent className="flex flex-1 flex-col text-sm text-muted-foreground">
           <img
             src={item.image}
             alt="News Article"
             className="mb-4 aspect-video w-full rounded-md object-cover"
           />
           <p>{item.description}</p>
-          <Button className="mt-4 border-none" variant="outline">
-            <a href={item.link} target="_blank" className="flex items-center">
+          <div className="flex-1"></div>
+        </CardContent>
+        <CardFooter>
+          <Link to={item.link} target="_blank" className="w-full">
+            <Button variant="outline" className="w-full">
               <span className="text-destructive/75">
                 {item.type === "video" && (
                   <MonitorPlayIcon
@@ -183,9 +187,9 @@ function NewsItem({ item }: { item: (typeof news)[number] }) {
                 )}
               </span>
               {item.label}
-            </a>
-          </Button>
-        </CardContent>
+            </Button>
+          </Link>
+        </CardFooter>
       </Card>
     </motion.div>
   );

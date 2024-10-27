@@ -3,6 +3,7 @@ import {
   Card,
   CardContent,
   CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -188,20 +189,23 @@ function LabsItem({ item }: { item: (typeof labs)[number] }) {
         y: item.style.y,
         opacity: item.style.opacity,
       }}>
-      <Card className="border-1 relative rounded-md border-opacity-10 bg-card/75 shadow-md dark:bg-black/30">
+      <Card className="border-1 relative flex h-full flex-col rounded-md border-opacity-10 bg-card/75 shadow-md dark:bg-black/30">
         <CardHeader>
           <CardTitle>{item.title}</CardTitle>
           <CardDescription>Difficulty: {item.difficulty}</CardDescription>
         </CardHeader>
-        <CardContent>
+        <CardContent className="flex flex-1 flex-col text-sm text-muted-foreground">
           <img
             src={item.image}
             alt="Lab Exercise"
             className="mb-4 aspect-video w-full rounded-md object-cover"
           />
           <p className="line-clamp-3">{item.description}</p>
-          <Link to={item.link}>
-            <Button className="mt-4 border-none" variant="outline">
+          <div className="flex-1"></div>
+        </CardContent>
+        <CardFooter>
+          <Link to={item.link} className="w-full">
+            <Button className="w-full" variant="outline">
               <span className="text-primary/75">
                 <BicepsFlexedIcon
                   className="mr-2 h-6 w-6"
@@ -211,7 +215,7 @@ function LabsItem({ item }: { item: (typeof labs)[number] }) {
               Start Lab
             </Button>
           </Link>
-        </CardContent>
+        </CardFooter>
       </Card>
     </motion.div>
   );

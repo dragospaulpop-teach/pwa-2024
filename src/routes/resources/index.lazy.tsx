@@ -1,11 +1,19 @@
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { createLazyFileRoute, Link } from "@tanstack/react-router";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import {
+  BookIcon,
   FilmIcon,
   LibraryIcon,
+  MonitorPlayIcon,
   PackageOpenIcon,
   PocketKnifeIcon,
 } from "lucide-react";
@@ -18,6 +26,8 @@ interface Resource {
   image: string;
   link: string;
   target: string;
+  type: string;
+  label: string;
   style: {
     scale: number;
     y: number;
@@ -43,6 +53,8 @@ const resources: Resources = {
       image: "/resources/php-manual.png",
       link: "https://www.php.net/manual/en/",
       target: "_blank",
+      type: "docs",
+      label: "Go to resource",
       style: {
         scale: 0.95,
         y: Math.random() * 1500 + 250,
@@ -59,6 +71,8 @@ const resources: Resources = {
       image: "/resources/jeff-php-for-beginners.webp",
       link: "https://www.youtube.com/watch?v=fw5ObX8P6as&t=448s",
       target: "_blank",
+      type: "video",
+      label: "Watch video",
       style: {
         scale: 0.95,
         y: Math.random() * 1500 + 250,
@@ -73,6 +87,8 @@ const resources: Resources = {
       image: "/resources/laracasts-30-days-to-learn-laravel.webp",
       link: "https://www.youtube.com/watch?v=SqTdHCTWqks",
       target: "_blank",
+      type: "video",
+      label: "Watch video",
       style: {
         scale: 0.95,
         y: Math.random() * 1500 + 250,
@@ -89,6 +105,8 @@ const resources: Resources = {
       image: "/resources/codespaces.jpg",
       link: "/resources/php-codespaces",
       target: "_self",
+      type: "article",
+      label: "Read article",
       style: {
         scale: 0.95,
         y: Math.random() * 1500 + 250,
@@ -105,6 +123,24 @@ const resources: Resources = {
       image: "/resources/php-annotated.webp",
       link: "https://www.youtube.com/@phpannotated/featured",
       target: "_blank",
+      type: "video",
+      label: "Watch video",
+      style: {
+        scale: 0.95,
+        y: Math.random() * 1500 + 250,
+        opacity: 0.05,
+      },
+    },
+    {
+      id: "apache-vs-nginx",
+      title: "Apache vs Nginx extensive benchmark by Anton Putra",
+      description:
+        "A great benchmark comparing Apache and Nginx performance by Anton Putra. I use ngnix as a reverse proxy and I must say I was not expecting some of these results. Subscribe to Anton for more great benchmarks.",
+      image: "/resources/nginx-apache-anton-putra.webp",
+      link: "https://www.youtube.com/watch?v=UGp4LmocE7o",
+      target: "_blank",
+      type: "video",
+      label: "Watch video",
       style: {
         scale: 0.95,
         y: Math.random() * 1500 + 250,
@@ -292,23 +328,44 @@ function ResourcesItem({ item }: ResourceItemProps) {
         y: item.style.y,
         opacity: item.style.opacity,
       }}>
-      <Card className="border-1 relative rounded-md border-opacity-10 bg-card/75 shadow-md dark:bg-black/30">
+      <Card className="border-1 relative flex h-full flex-col rounded-md border-opacity-10 bg-card/75 shadow-md dark:bg-black/30">
         <CardHeader>
           <CardTitle>{item.title}</CardTitle>
         </CardHeader>
-        <CardContent>
+        <CardContent className="flex flex-1 flex-col text-sm text-muted-foreground">
           <img
             src={item.image}
             alt="video thumbnail"
             className="mb-4 aspect-video w-full rounded-md object-cover"
           />
           <p>{item.description}</p>
-          <Link to={item.link} target={item.target}>
-            <Button className="mt-4 border-none" variant="outline">
-              Go to link
+          <div className="flex-1"></div>
+        </CardContent>
+        <CardFooter>
+          <Link to={item.link} target={item.target} className="w-full">
+            <Button variant="outline" className="w-full">
+              {item.type === "video" && (
+                <span className="text-destructive/75">
+                  <MonitorPlayIcon
+                    className="mr-2 h-6 w-6"
+                    color="currentColor"
+                  />
+                </span>
+              )}
+              {item.type === "article" && (
+                <span className="text-primary/75">
+                  <BookIcon className="mr-2 h-6 w-6" color="currentColor" />
+                </span>
+              )}
+              {item.type === "docs" && (
+                <span className="text-chart-2/75">
+                  <LibraryIcon className="mr-2 h-6 w-6" color="currentColor" />
+                </span>
+              )}
+              {item.label}
             </Button>
           </Link>
-        </CardContent>
+        </CardFooter>
       </Card>
     </motion.div>
   );
