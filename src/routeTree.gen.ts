@@ -13,6 +13,7 @@ import { createFileRoute } from '@tanstack/react-router'
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as ResourcesPhpCodespacesImport } from './routes/resources/php-codespaces'
 
 // Create Virtual Routes
 
@@ -21,8 +22,9 @@ const TheoryIndexLazyImport = createFileRoute('/theory/')()
 const ResourcesIndexLazyImport = createFileRoute('/resources/')()
 const NewsIndexLazyImport = createFileRoute('/news/')()
 const LabsIndexLazyImport = createFileRoute('/labs/')()
-const LabsLab2LazyImport = createFileRoute('/labs/lab2')()
-const LabsLab1LazyImport = createFileRoute('/labs/lab1')()
+const LabsCourseLabStepLazyImport = createFileRoute(
+  '/labs/$course/$lab/$step',
+)()
 
 // Create/Update Routes
 
@@ -58,17 +60,19 @@ const LabsIndexLazyRoute = LabsIndexLazyImport.update({
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/labs/index.lazy').then((d) => d.Route))
 
-const LabsLab2LazyRoute = LabsLab2LazyImport.update({
-  id: '/labs/lab2',
-  path: '/labs/lab2',
+const ResourcesPhpCodespacesRoute = ResourcesPhpCodespacesImport.update({
+  id: '/resources/php-codespaces',
+  path: '/resources/php-codespaces',
   getParentRoute: () => rootRoute,
-} as any).lazy(() => import('./routes/labs/lab2.lazy').then((d) => d.Route))
+} as any)
 
-const LabsLab1LazyRoute = LabsLab1LazyImport.update({
-  id: '/labs/lab1',
-  path: '/labs/lab1',
+const LabsCourseLabStepLazyRoute = LabsCourseLabStepLazyImport.update({
+  id: '/labs/$course/$lab/$step',
+  path: '/labs/$course/$lab/$step',
   getParentRoute: () => rootRoute,
-} as any).lazy(() => import('./routes/labs/lab1.lazy').then((d) => d.Route))
+} as any).lazy(() =>
+  import('./routes/labs/$course.$lab.$step.lazy').then((d) => d.Route),
+)
 
 // Populate the FileRoutesByPath interface
 
@@ -81,18 +85,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexLazyImport
       parentRoute: typeof rootRoute
     }
-    '/labs/lab1': {
-      id: '/labs/lab1'
-      path: '/labs/lab1'
-      fullPath: '/labs/lab1'
-      preLoaderRoute: typeof LabsLab1LazyImport
-      parentRoute: typeof rootRoute
-    }
-    '/labs/lab2': {
-      id: '/labs/lab2'
-      path: '/labs/lab2'
-      fullPath: '/labs/lab2'
-      preLoaderRoute: typeof LabsLab2LazyImport
+    '/resources/php-codespaces': {
+      id: '/resources/php-codespaces'
+      path: '/resources/php-codespaces'
+      fullPath: '/resources/php-codespaces'
+      preLoaderRoute: typeof ResourcesPhpCodespacesImport
       parentRoute: typeof rootRoute
     }
     '/labs/': {
@@ -123,6 +120,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TheoryIndexLazyImport
       parentRoute: typeof rootRoute
     }
+    '/labs/$course/$lab/$step': {
+      id: '/labs/$course/$lab/$step'
+      path: '/labs/$course/$lab/$step'
+      fullPath: '/labs/$course/$lab/$step'
+      preLoaderRoute: typeof LabsCourseLabStepLazyImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -130,84 +134,84 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexLazyRoute
-  '/labs/lab1': typeof LabsLab1LazyRoute
-  '/labs/lab2': typeof LabsLab2LazyRoute
+  '/resources/php-codespaces': typeof ResourcesPhpCodespacesRoute
   '/labs': typeof LabsIndexLazyRoute
   '/news': typeof NewsIndexLazyRoute
   '/resources': typeof ResourcesIndexLazyRoute
   '/theory': typeof TheoryIndexLazyRoute
+  '/labs/$course/$lab/$step': typeof LabsCourseLabStepLazyRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexLazyRoute
-  '/labs/lab1': typeof LabsLab1LazyRoute
-  '/labs/lab2': typeof LabsLab2LazyRoute
+  '/resources/php-codespaces': typeof ResourcesPhpCodespacesRoute
   '/labs': typeof LabsIndexLazyRoute
   '/news': typeof NewsIndexLazyRoute
   '/resources': typeof ResourcesIndexLazyRoute
   '/theory': typeof TheoryIndexLazyRoute
+  '/labs/$course/$lab/$step': typeof LabsCourseLabStepLazyRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexLazyRoute
-  '/labs/lab1': typeof LabsLab1LazyRoute
-  '/labs/lab2': typeof LabsLab2LazyRoute
+  '/resources/php-codespaces': typeof ResourcesPhpCodespacesRoute
   '/labs/': typeof LabsIndexLazyRoute
   '/news/': typeof NewsIndexLazyRoute
   '/resources/': typeof ResourcesIndexLazyRoute
   '/theory/': typeof TheoryIndexLazyRoute
+  '/labs/$course/$lab/$step': typeof LabsCourseLabStepLazyRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/labs/lab1'
-    | '/labs/lab2'
+    | '/resources/php-codespaces'
     | '/labs'
     | '/news'
     | '/resources'
     | '/theory'
+    | '/labs/$course/$lab/$step'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/labs/lab1'
-    | '/labs/lab2'
+    | '/resources/php-codespaces'
     | '/labs'
     | '/news'
     | '/resources'
     | '/theory'
+    | '/labs/$course/$lab/$step'
   id:
     | '__root__'
     | '/'
-    | '/labs/lab1'
-    | '/labs/lab2'
+    | '/resources/php-codespaces'
     | '/labs/'
     | '/news/'
     | '/resources/'
     | '/theory/'
+    | '/labs/$course/$lab/$step'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexLazyRoute: typeof IndexLazyRoute
-  LabsLab1LazyRoute: typeof LabsLab1LazyRoute
-  LabsLab2LazyRoute: typeof LabsLab2LazyRoute
+  ResourcesPhpCodespacesRoute: typeof ResourcesPhpCodespacesRoute
   LabsIndexLazyRoute: typeof LabsIndexLazyRoute
   NewsIndexLazyRoute: typeof NewsIndexLazyRoute
   ResourcesIndexLazyRoute: typeof ResourcesIndexLazyRoute
   TheoryIndexLazyRoute: typeof TheoryIndexLazyRoute
+  LabsCourseLabStepLazyRoute: typeof LabsCourseLabStepLazyRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexLazyRoute: IndexLazyRoute,
-  LabsLab1LazyRoute: LabsLab1LazyRoute,
-  LabsLab2LazyRoute: LabsLab2LazyRoute,
+  ResourcesPhpCodespacesRoute: ResourcesPhpCodespacesRoute,
   LabsIndexLazyRoute: LabsIndexLazyRoute,
   NewsIndexLazyRoute: NewsIndexLazyRoute,
   ResourcesIndexLazyRoute: ResourcesIndexLazyRoute,
   TheoryIndexLazyRoute: TheoryIndexLazyRoute,
+  LabsCourseLabStepLazyRoute: LabsCourseLabStepLazyRoute,
 }
 
 export const routeTree = rootRoute
@@ -223,22 +227,19 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/labs/lab1",
-        "/labs/lab2",
+        "/resources/php-codespaces",
         "/labs/",
         "/news/",
         "/resources/",
-        "/theory/"
+        "/theory/",
+        "/labs/$course/$lab/$step"
       ]
     },
     "/": {
       "filePath": "index.lazy.tsx"
     },
-    "/labs/lab1": {
-      "filePath": "labs/lab1.lazy.tsx"
-    },
-    "/labs/lab2": {
-      "filePath": "labs/lab2.lazy.tsx"
+    "/resources/php-codespaces": {
+      "filePath": "resources/php-codespaces.tsx"
     },
     "/labs/": {
       "filePath": "labs/index.lazy.tsx"
@@ -251,6 +252,9 @@ export const routeTree = rootRoute
     },
     "/theory/": {
       "filePath": "theory/index.lazy.tsx"
+    },
+    "/labs/$course/$lab/$step": {
+      "filePath": "labs/$course.$lab.$step.lazy.tsx"
     }
   }
 }

@@ -8,7 +8,7 @@ export default function Paragraph({
   className?: string;
 }) {
   return (
-    <div className={cn("text-lg text-muted-foreground my-4", className)}>
+    <div className={cn("my-4 text-lg text-foreground", className)}>
       {children}
     </div>
   );

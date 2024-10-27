@@ -10,7 +10,13 @@ import ReactDOM from "react-dom/client";
 import { routeTree } from "./routeTree.gen";
 
 // Create a new router instance
-const router = createRouter({ routeTree });
+const router = createRouter({
+  routeTree,
+});
+
+router.subscribe("onLoad", () => {
+  window.scrollTo(0, 0);
+});
 
 // Register the router instance for type safety
 declare module "@tanstack/react-router" {
@@ -28,6 +34,6 @@ if (!rootElement.innerHTML) {
       <ThemeProvider defaultTheme="dark" storageKey="pwa-2024-ui-theme">
         <RouterProvider router={router} />
       </ThemeProvider>
-    </StrictMode>
+    </StrictMode>,
   );
 }
