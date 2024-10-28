@@ -128,7 +128,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             call this function is because the session has to be started before
             we use the <Badge variant="secondary">$_SESSION</Badge> superglobal
             variable. When we call this function the server creates a new
-            session ID and a session file on the server and immediately send a
+            session ID and a session file on the server and immediately sends a
             header to the browser to save the session ID in a cookie. This
             function must be called before any output is sent to the browser.
           </AlertDescription>
