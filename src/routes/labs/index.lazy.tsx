@@ -20,6 +20,7 @@ interface Lab {
   image: string;
   difficulty: string;
   link: string;
+  note?: React.ReactNode;
   style: {
     scale: number;
     y: number;
@@ -36,6 +37,7 @@ const labs: Lab[] = [
     image: `/labs/pwa-1.png`,
     difficulty: "Beginner",
     link: "/labs/pwa/lab1/intro",
+    note: null,
     style: {
       scale: 0.95,
       y: Math.random() * 1500 + 250,
@@ -50,6 +52,7 @@ const labs: Lab[] = [
     image: `/labs/pwa-2.png`,
     difficulty: "Beginner",
     link: "/labs/pwa/lab2/intro",
+    note: null,
     style: {
       scale: 0.95,
       y: Math.random() * 1500 + 250,
@@ -57,13 +60,43 @@ const labs: Lab[] = [
     },
   },
   {
-    id: "pwa2",
+    id: "pwa3",
     title: `PWA Lab 3`,
     description:
       "Continuing the Bookstore project. Implementing filtering thorugh GET and forms. Click to begin.",
-    image: `/labs/pwa-3.png`,
+    image: `/labs/pwa-3.jpg`,
     difficulty: "Beginner",
     link: "/labs/pwa/lab3/intro",
+    note: (
+      <a
+        className="my-2 text-xs italic text-muted-foreground"
+        href="https://www.vecteezy.com/"
+        target="_blank">
+        Photo by Vecteezy
+      </a>
+    ),
+    style: {
+      scale: 0.95,
+      y: Math.random() * 1500 + 250,
+      opacity: 0.05,
+    },
+  },
+  {
+    id: "pwa4",
+    title: `PWA Lab 4`,
+    description:
+      "Authentication and authorization. We create a login page, protect the edit book page and send a post request to edit a book's data. Click to begin.",
+    image: `/labs/pwa-4.png`,
+    difficulty: "Beginner",
+    link: "/labs/pwa/lab4/intro",
+    note: (
+      <a
+        className="my-2 text-xs italic text-muted-foreground"
+        href="https://www.vecteezy.com/vector-art/952507-user-login-illustration-with-key"
+        target="_blank">
+        Photo by Vecteezy
+      </a>
+    ),
     style: {
       scale: 0.95,
       y: Math.random() * 1500 + 250,
@@ -218,7 +251,8 @@ function LabsItem({ item }: { item: Lab }) {
             alt="Lab Exercise"
             className="mb-4 aspect-video w-full rounded-md object-cover"
           />
-          <p className="line-clamp-3">{item.description}</p>
+          {item.note}
+          <p>{item.description}</p>
           <div className="flex-1"></div>
         </CardContent>
         <CardFooter>

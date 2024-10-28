@@ -227,7 +227,7 @@ const steps: CourseSteps = {
     lab3: [
       {
         id: "intro",
-        title: "Practice",
+        title: "Intro",
         description: "Overview",
         path: "/labs/pwa/lab3/intro",
       },
@@ -272,6 +272,74 @@ const steps: CourseSteps = {
         title: "Outro",
         description: "k thx bye",
         path: "/labs/pwa/lab3/outro",
+      },
+    ],
+    lab4: [
+      {
+        id: "intro",
+        title: "Intro",
+        description: "Overview",
+        path: "/labs/pwa/lab4/intro",
+      },
+      {
+        id: "step1",
+        title: "Theory",
+        description: "HTTP as a Stateless Protocol",
+        path: "/labs/pwa/lab4/step1",
+      },
+      {
+        id: "step2",
+        title: "Theory",
+        description: "Sessions vs. Tokens for Authentication",
+        path: "/labs/pwa/lab4/step2",
+      },
+      {
+        id: "step3",
+        title: "Theory",
+        description: "Cookies vs. Local Storage",
+        path: "/labs/pwa/lab4/step3",
+      },
+      {
+        id: "step4",
+        title: "Theory",
+        description: "PHP Sessions",
+        path: "/labs/pwa/lab4/step4",
+      },
+      {
+        id: "step5",
+        title: "Practice",
+        description: "Setting Up the Login Page",
+        path: "/labs/pwa/lab4/step5",
+      },
+      {
+        id: "step6",
+        title: "Practice",
+        description: "Guarding the Edit Page",
+        path: "/labs/pwa/lab4/step6",
+      },
+      {
+        id: "step7",
+        title: "Practice",
+        description: "Displaying the Edit Link Only When Logged In",
+        path: "/labs/pwa/lab4/step7",
+      },
+      {
+        id: "step8",
+        title: "Practice",
+        description: "Creating the Edit Book Page",
+        path: "/labs/pwa/lab4/step8",
+      },
+      {
+        id: "step9",
+        title: "Practice",
+        description: "Hands-On Exercises",
+        path: "/labs/pwa/lab4/step9",
+      },
+      {
+        id: "outro",
+        title: "Outro",
+        description: "k thx bye",
+        path: "/labs/pwa/lab4/outro",
       },
     ],
   },
