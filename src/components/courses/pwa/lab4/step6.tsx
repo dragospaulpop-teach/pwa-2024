@@ -39,7 +39,8 @@ if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
         <Paragraph>
           Restrict access to the{" "}
           <Badge variant="secondary">edit_book.php</Badge> page by checking if
-          the user is logged in. Place this code at the top of edit.php:
+          the user is logged in. Place this code at the top of{" "}
+          <Badge variant="secondary">edit_book.php</Badge>:
         </Paragraph>
         <Code code={code} language="php" />
       </CardContent>
