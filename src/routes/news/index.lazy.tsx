@@ -13,7 +13,23 @@ import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import { MonitorPlayIcon } from "lucide-react";
 import { useRef } from "react";
 
-const news = [
+interface NewsItem {
+  id: number;
+  title: string;
+  description: string;
+  image: string;
+  published: string;
+  link: string;
+  type: "video" | "article";
+  label: string;
+  style: {
+    scale: number;
+    y: number;
+    opacity: number;
+  };
+}
+
+const news: NewsItem[] = [
   {
     id: 1,
     title: "Laravel gets beginner friendly improvements",
@@ -111,7 +127,7 @@ function News() {
   );
 }
 
-function NewsItem({ item }: { item: (typeof news)[number] }) {
+function NewsItem({ item }: { item: NewsItem }) {
   const ref = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress } = useScroll({

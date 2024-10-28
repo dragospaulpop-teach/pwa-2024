@@ -13,7 +13,21 @@ import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import { BicepsFlexedIcon } from "lucide-react";
 import { useRef } from "react";
 
-const labs = [
+interface Lab {
+  id: string;
+  title: string;
+  description: string;
+  image: string;
+  difficulty: string;
+  link: string;
+  style: {
+    scale: number;
+    y: number;
+    opacity: number;
+  };
+}
+
+const labs: Lab[] = [
   {
     id: "pwa1",
     title: `PWA Lab 1`,
@@ -136,7 +150,7 @@ function Labs() {
   );
 }
 
-function LabsItem({ item }: { item: (typeof labs)[number] }) {
+function LabsItem({ item }: { item: Lab }) {
   const ref = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress } = useScroll({

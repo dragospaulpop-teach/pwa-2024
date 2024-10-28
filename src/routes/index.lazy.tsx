@@ -9,23 +9,324 @@ import {
 } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { createLazyFileRoute, Link } from "@tanstack/react-router";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import {
   BicepsFlexedIcon,
-  BookOpen,
-  FileText,
   FilmIcon,
   LibraryIcon,
   MonitorPlayIcon,
-  Newspaper,
-  PackageOpenIcon,
+  NewspaperIcon,
   PocketKnifeIcon,
 } from "lucide-react";
 import { useRef } from "react";
 
-export const Route = createLazyFileRoute("/")({
-  component: Index,
-});
+interface Item {
+  id: string;
+  icon: string | null;
+  title: string;
+  description: string;
+  personal: string | null;
+  difficulty: string | null;
+  date: Date | null;
+  url: string;
+  target: string;
+  btnIcon: React.ReactNode;
+  label: string;
+  style: {
+    scale: number;
+    y: number;
+    opacity: number;
+  };
+}
+
+interface Items {
+  [type: string]: Item[];
+}
+
+const items: Items = {
+  news: [
+    {
+      id: "theo-laravel",
+      icon: null,
+      title: "Laravel gets beginner friendly improvements",
+      description:
+        "Theo talks about how the guys behind Laravel adapted the framework to make it more beginner friendly after they saw him strugling online.",
+      personal: "You should subscribe to Theo.",
+      difficulty: null,
+      date: new Date("2024-10-27"),
+      url: "https://www.youtube.com/watch?v=3dgUiF2a3pM",
+      btnIcon: (
+        <span className="mr-2 text-destructive/75">
+          <MonitorPlayIcon className="h-6 w-6" color="currentColor" />
+        </span>
+      ),
+      label: "Watch video",
+      target: "_blank",
+      style: {
+        scale: 0.95,
+        y: Math.random() * 1500 + 250,
+        opacity: 0.05,
+      },
+    },
+  ],
+  labs: [
+    {
+      id: "pwa-lab1",
+      icon: null,
+      title: "PWA Lab 1",
+      description: "Intro to how the Internet works, servers, URLs and more.",
+      personal: null,
+      difficulty: "Beginner",
+      date: null,
+      url: "/labs/pwa/lab1/intro",
+      btnIcon: (
+        <span className="mr-2 text-primary/75">
+          <BicepsFlexedIcon className="h-6 w-6" color="currentColor" />
+        </span>
+      ),
+      label: "Start Lab",
+      target: "_self",
+      style: {
+        scale: 0.95,
+        y: Math.random() * 1500 + 250,
+        opacity: 0.05,
+      },
+    },
+    {
+      id: "pwa-lab2",
+      icon: null,
+      title: "PWA Lab 2",
+      description:
+        "Getting our hands dirty with some PHP. Starting the Bookstore project. Working with arrays and JSON.",
+      personal: null,
+      difficulty: "Beginner",
+      date: null,
+      url: "/labs/pwa/lab2/intro",
+      target: "_self",
+      btnIcon: (
+        <span className="mr-2 text-primary/75">
+          <BicepsFlexedIcon className="h-6 w-6" color="currentColor" />
+        </span>
+      ),
+      label: "Start Lab",
+      style: {
+        scale: 0.95,
+        y: Math.random() * 1500 + 250,
+        opacity: 0.05,
+      },
+    },
+    {
+      id: "pwa-lab3",
+      icon: null,
+      title: "PWA Lab 3",
+      description:
+        "Continuing the Bookstore project. Implementing filtering thorugh GET and forms.",
+      personal: null,
+      difficulty: "Beginner",
+      date: null,
+      url: "/labs/pwa/lab3/intro",
+      target: "_self",
+      btnIcon: (
+        <span className="mr-2 text-primary/75">
+          <BicepsFlexedIcon className="h-6 w-6" color="currentColor" />
+        </span>
+      ),
+      label: "Start Lab",
+      style: {
+        scale: 0.95,
+        y: Math.random() * 1500 + 250,
+        opacity: 0.05,
+      },
+    },
+  ],
+  resources: [
+    {
+      id: "docs",
+      icon: "file-text",
+      title: "Documentation",
+      description:
+        "Access comprehensive documentation for various technologies and frameworks.",
+      personal: null,
+      difficulty: null,
+      date: null,
+      url: "/resources#docs",
+      target: "_self",
+      btnIcon: (
+        <span className="mr-2 text-primary/75">
+          <LibraryIcon className="h-6 w-6" color="currentColor" />
+        </span>
+      ),
+      label: "Browse Docs",
+      style: {
+        scale: 0.95,
+        y: Math.random() * 1500 + 250,
+        opacity: 0.05,
+      },
+    },
+    {
+      id: "videos",
+      icon: "film",
+      title: "Video Tutorials",
+      description:
+        "Watch video tutorials on web and mobile development topics.",
+      personal: null,
+      difficulty: null,
+      date: null,
+      url: "/resources#videos",
+      target: "_self",
+      btnIcon: (
+        <span className="mr-2 text-primary/75">
+          <FilmIcon className="h-6 w-6" color="currentColor" />
+        </span>
+      ),
+      label: "Watch videos",
+      style: {
+        scale: 0.95,
+        y: Math.random() * 1500 + 250,
+        opacity: 0.05,
+      },
+    },
+    {
+      id: "misc",
+      icon: "newspaper",
+      title: "Miscellaneous",
+      description:
+        "Things that I personally recommend reading or watching. I'll just throw my favorite creators here.",
+      personal: null,
+      difficulty: null,
+      date: null,
+      url: "/resources#misc",
+      target: "_self",
+      btnIcon: (
+        <span className="mr-2 text-primary/75">
+          <NewspaperIcon className="h-6 w-6" color="currentColor" />
+        </span>
+      ),
+      label: "Browse misc",
+      style: {
+        scale: 0.95,
+        y: Math.random() * 1500 + 250,
+        opacity: 0.05,
+      },
+    },
+    {
+      id: "how-tos",
+      icon: "pocket-knife",
+      title: "How-to Guides",
+      description: "Step-by-step guides for various tasks.",
+      personal: null,
+      difficulty: null,
+      date: null,
+      url: "/resources#how-tos",
+      target: "_self",
+      btnIcon: (
+        <span className="mr-2 text-primary/75">
+          <PocketKnifeIcon className="h-6 w-6" color="currentColor" />
+        </span>
+      ),
+      label: "Browse how-tos",
+      style: {
+        scale: 0.95,
+        y: Math.random() * 1500 + 250,
+        opacity: 0.05,
+      },
+    },
+  ],
+};
+
+function ItemCard({ item }: { item: Item }) {
+  const ref = useRef<HTMLDivElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end end"],
+  });
+
+  const scaleValue = useTransform(
+    scrollYProgress,
+    [0, 0.5, 1],
+    [item.style.scale, item.style.scale, 1],
+  );
+  const scale = useSpring(scaleValue, {
+    stiffness: 100,
+    damping: 30,
+    mass: 2,
+  });
+
+  const yValue = useTransform(
+    scrollYProgress,
+    [0, 0.5, 1],
+    [item.style.y, item.style.y, 0],
+  );
+  const y = useSpring(yValue, {
+    stiffness: 100,
+    damping: 30,
+    mass: 2,
+  });
+
+  const opacityValue = useTransform(
+    scrollYProgress,
+    [0, 0.5, 1],
+    [item.style.opacity, item.style.opacity, 1],
+  );
+  const opacity = useSpring(opacityValue, {
+    stiffness: 100,
+    damping: 30,
+    mass: 2,
+  });
+  return (
+    <motion.div
+      ref={ref}
+      style={{
+        scale,
+        y,
+        opacity,
+        willChange: "transform, opacity",
+      }}
+      initial={{
+        scale: item.style.scale,
+        y: item.style.y,
+        opacity: item.style.opacity,
+      }}>
+      <Card className="flex h-full flex-col bg-white/75 dark:bg-black/75">
+        <CardHeader>
+          <CardTitle>{item.title}</CardTitle>
+          <CardDescription>
+            {item.date &&
+              item.date.toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })}
+            {item.difficulty && (
+              <span className="text-sm text-muted-foreground">
+                Difficulty: {item.difficulty}
+              </span>
+            )}
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="flex flex-1 flex-col">
+          <p>{item.description}</p>
+          {item.personal && (
+            <p className="mt-4 text-sm italic text-primary">{item.personal}</p>
+          )}
+          <div className="flex-1"></div>
+        </CardContent>
+        <CardFooter>
+          <Button className="" variant="outline">
+            <Link
+              href={item.url}
+              target={item.target}
+              className="flex items-center">
+              {item.btnIcon}
+              {item.label}
+            </Link>
+          </Button>
+        </CardFooter>
+      </Card>
+    </motion.div>
+  );
+}
 
 function Index() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -114,46 +415,9 @@ function Index() {
                 Latest News
               </h2>
               <div className="grid gap-2 md:grid-cols-2 lg:grid-cols-3">
-                <Card className="flex flex-col bg-white/75 dark:bg-black/75">
-                  <CardHeader>
-                    <CardTitle>
-                      Laravel gets beginner friendly improvements
-                    </CardTitle>
-                    <CardDescription>
-                      {new Date("2024-10-27").toLocaleDateString("en-US", {
-                        year: "numeric",
-                        month: "long",
-                        day: "numeric",
-                      })}
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent className="flex-1">
-                    <p>
-                      Theo talks about how the guys behind Laravel adapted the
-                      framework to make it more beginner friendly after they saw
-                      him strugling online.
-                    </p>
-                    <p className="mt-4 text-sm italic text-primary">
-                      You should subscribe to Theo.
-                    </p>
-                  </CardContent>
-                  <CardFooter>
-                    <Button className="" variant="outline">
-                      <a
-                        href="https://www.youtube.com/watch?v=3dgUiF2a3pM"
-                        target="_blank"
-                        className="flex items-center">
-                        <span className="text-destructive/75">
-                          <MonitorPlayIcon
-                            className="mr-2 h-6 w-6"
-                            color="currentColor"
-                          />
-                        </span>
-                        Watch the video
-                      </a>
-                    </Button>
-                  </CardFooter>
-                </Card>
+                {items.news.map((item) => (
+                  <ItemCard key={item.id} item={item} />
+                ))}
               </div>
               <div className="mt-8 text-center">
                 <Link to="/news">
@@ -177,88 +441,9 @@ function Index() {
                 Lab Exercises
               </h2>
               <div className="grid gap-2 md:grid-cols-2 lg:grid-cols-3">
-                <Card className="flex flex-col bg-white/75 dark:bg-black/75">
-                  <CardHeader>
-                    <CardTitle>PWA Lab 1</CardTitle>
-                    <CardDescription>Difficulty: Begginer</CardDescription>
-                  </CardHeader>
-                  <CardContent className="flex-1">
-                    <p>
-                      Intro to how the Internet works, servers, URLs and more.
-                      Click to begin.
-                    </p>
-                  </CardContent>
-                  <CardFooter>
-                    <Link
-                      to="/labs/$course/$lab/$step"
-                      params={{ course: "pwa", lab: "lab1", step: "intro" }}>
-                      <Button variant="outline">
-                        <span className="text-primary/75">
-                          <BicepsFlexedIcon
-                            className="mr-2 h-6 w-6"
-                            color="currentColor"
-                          />
-                        </span>
-                        Start Lab
-                      </Button>
-                    </Link>
-                  </CardFooter>
-                </Card>
-                <Card className="flex flex-col bg-white/75 dark:bg-black/75">
-                  <CardHeader>
-                    <CardTitle>PWA Lab 2</CardTitle>
-                    <CardDescription>Difficulty: Begginer</CardDescription>
-                  </CardHeader>
-                  <CardContent className="flex-1">
-                    <p>
-                      Getting our hands dirty with some PHP. Starting the
-                      Bookstore project. Working with arrays and JSON. Click to
-                      begin.
-                    </p>
-                  </CardContent>
-                  <CardFooter>
-                    <Link
-                      to="/labs/$course/$lab/$step"
-                      params={{ course: "pwa", lab: "lab2", step: "intro" }}>
-                      <Button variant="outline">
-                        <span className="text-primary/75">
-                          <BicepsFlexedIcon
-                            className="mr-2 h-6 w-6"
-                            color="currentColor"
-                          />
-                        </span>
-                        Start Lab
-                      </Button>
-                    </Link>
-                  </CardFooter>
-                </Card>
-                <Card className="flex flex-col bg-white/75 dark:bg-black/75">
-                  <CardHeader>
-                    <CardTitle>PWA Lab3</CardTitle>
-                    <CardDescription>Difficulty: Begginer</CardDescription>
-                  </CardHeader>
-                  <CardContent className="flex-1">
-                    <p>
-                      Continuing the Bookstore project. Implementing filtering
-                      thorugh GET and forms. Click to begin.
-                    </p>
-                  </CardContent>
-                  <CardFooter>
-                    <Link
-                      to="/labs/$course/$lab/$step"
-                      params={{ course: "pwa", lab: "lab3", step: "intro" }}>
-                      <Button variant="outline">
-                        <span className="text-primary/75">
-                          <BicepsFlexedIcon
-                            className="mr-2 h-6 w-6"
-                            color="currentColor"
-                          />
-                        </span>
-                        Start Lab
-                      </Button>
-                    </Link>
-                  </CardFooter>
-                </Card>
+                {items.labs.map((item) => (
+                  <ItemCard key={item.id} item={item} />
+                ))}
               </div>
               <div className="mt-8 text-center">
                 <Link to="/labs">
@@ -282,94 +467,9 @@ function Index() {
                 Resources
               </h2>
               <div className="grid gap-2 md:grid-cols-2 lg:grid-cols-3">
-                <Card className="flex flex-col bg-white/75 dark:bg-black/75">
-                  <CardHeader>
-                    <CardTitle>Documentation</CardTitle>
-                  </CardHeader>
-                  <CardContent className="flex-1">
-                    <FileText className="mb-4 h-12 w-12" />
-                    <p>
-                      Access comprehensive documentation for various
-                      technologies and frameworks.
-                    </p>
-                  </CardContent>
-                  <CardFooter>
-                    <Link to="/resources" hash="docs">
-                      <Button variant="outline">
-                        <span className="text-chart-2/75">
-                          <LibraryIcon className="mr-2 h-6 w-6" />
-                        </span>
-                        Browse Docs
-                      </Button>
-                    </Link>
-                  </CardFooter>
-                </Card>
-                <Card className="flex flex-col bg-white/75 dark:bg-black/75">
-                  <CardHeader>
-                    <CardTitle>Video Tutorials</CardTitle>
-                  </CardHeader>
-                  <CardContent className="flex-1">
-                    <BookOpen className="mb-4 h-12 w-12" />
-                    <p>
-                      Watch video tutorials on web and mobile development
-                      topics.
-                    </p>
-                  </CardContent>
-                  <CardFooter>
-                    <Link to="/resources" hash="videos">
-                      <Button variant="outline">
-                        <span className="text-destructive/75">
-                          <FilmIcon className="mr-2 h-6 w-6" />
-                        </span>
-                        Watch videos
-                      </Button>
-                    </Link>
-                  </CardFooter>
-                </Card>
-                <Card className="flex flex-col bg-white/75 dark:bg-black/75">
-                  <CardHeader>
-                    <CardTitle>Miscellaneous</CardTitle>
-                  </CardHeader>
-                  <CardContent className="flex-1">
-                    <Newspaper className="mb-4 h-12 w-12" />
-                    <p>
-                      Things that I personally recommend reading or watching.
-                      I'll just throw my favorite creators here.
-                    </p>
-                  </CardContent>
-                  <CardFooter>
-                    <Link to="/resources" hash="misc">
-                      <Button variant="outline">
-                        <span className="text-chart-4/75">
-                          <PackageOpenIcon className="mr-2 h-6 w-6" />
-                        </span>
-                        Browse Misc
-                      </Button>
-                    </Link>
-                  </CardFooter>
-                </Card>
-                <Card className="flex flex-col bg-white/75 dark:bg-black/75">
-                  <CardHeader>
-                    <CardTitle>How Tos</CardTitle>
-                  </CardHeader>
-                  <CardContent className="flex-1">
-                    <Newspaper className="mb-4 h-12 w-12" />
-                    <p>
-                      Find helpful how-to guides and tutorials for various
-                      technologies and frameworks.
-                    </p>
-                  </CardContent>
-                  <CardFooter>
-                    <Link to="/resources" hash="how-tos">
-                      <Button variant="outline">
-                        <span className="text-primary/75">
-                          <PocketKnifeIcon className="mr-2 h-6 w-6" />
-                        </span>
-                        Browse How Tos
-                      </Button>
-                    </Link>
-                  </CardFooter>
-                </Card>
+                {items.resources.map((item) => (
+                  <ItemCard key={item.id} item={item} />
+                ))}
               </div>
               <div className="mt-8 text-center">
                 <Link to="/resources">
@@ -421,3 +521,7 @@ function Index() {
     </div>
   );
 }
+
+export const Route = createLazyFileRoute("/")({
+  component: Index,
+});
