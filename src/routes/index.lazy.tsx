@@ -138,6 +138,29 @@ const items: Items = {
         opacity: 0.05,
       },
     },
+    {
+      id: "pwa-lab4",
+      icon: null,
+      title: "PWA Lab 4",
+      description:
+        "Tackling authentication and authorization. Implementing sessions and cookies.",
+      personal: null,
+      difficulty: "Beginner",
+      date: null,
+      url: "/labs/pwa/lab4/intro",
+      target: "_self",
+      btnIcon: (
+        <span className="mr-2 text-primary/75">
+          <BicepsFlexedIcon className="h-6 w-6" color="currentColor" />
+        </span>
+      ),
+      label: "Start Lab",
+      style: {
+        scale: 0.95,
+        y: Math.random() * 1500 + 250,
+        opacity: 0.05,
+      },
+    },
   ],
   resources: [
     {
