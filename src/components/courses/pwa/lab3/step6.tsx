@@ -14,7 +14,7 @@ import UnorderedList from "@/components/unordered-list";
 
 export default function Card1() {
   return (
-    <Card>
+    <Card className="bg-background/90 shadow-md">
       <CardHeader>
         <CardTitle>
           <Title>Part 4: Hands-On Exercises</Title>

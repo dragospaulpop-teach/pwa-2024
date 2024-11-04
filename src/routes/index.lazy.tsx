@@ -161,6 +161,29 @@ const items: Items = {
         opacity: 0.05,
       },
     },
+    {
+      id: "pwa-lab5",
+      icon: null,
+      title: "PWA Lab 5",
+      description:
+        "Data persistancve with MySQL. Relational theory recap and moving our books data to a database.",
+      personal: null,
+      difficulty: "Beginner",
+      date: null,
+      url: "/labs/pwa/lab5/intro",
+      target: "_self",
+      btnIcon: (
+        <span className="mr-2 text-primary/75">
+          <BicepsFlexedIcon className="h-6 w-6" color="currentColor" />
+        </span>
+      ),
+      label: "Start Lab",
+      style: {
+        scale: 0.95,
+        y: Math.random() * 1500 + 250,
+        opacity: 0.05,
+      },
+    },
   ],
   resources: [
     {

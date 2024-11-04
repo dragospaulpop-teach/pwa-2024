@@ -13,7 +13,7 @@ import {
 
 export default function Card6() {
   return (
-    <Card className="bg-background/75 shadow-md">
+    <Card className="bg-background/90 shadow-md">
       <CardHeader>
         <CardTitle>
           <Title>Response</Title>

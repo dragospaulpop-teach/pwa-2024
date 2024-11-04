@@ -14,7 +14,7 @@ import {
 export default function Card12() {
   const code = `127.0.0.1 bookstore.local`;
   return (
-    <Card className="bg-background/75 shadow-md">
+    <Card className="bg-background/90 shadow-md">
       <CardHeader>
         <CardTitle>
           <Title>Practice</Title>

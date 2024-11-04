@@ -12,7 +12,7 @@ import {
 
 export default function Card1() {
   return (
-    <Card>
+    <Card className="bg-background/90 shadow-md">
       <CardHeader>
         <CardTitle>
           <Title>Theory</Title>

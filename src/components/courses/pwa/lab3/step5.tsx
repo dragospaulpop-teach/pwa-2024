@@ -28,7 +28,7 @@ export default function Card1() {
 </form>`;
 
   return (
-    <Card>
+    <Card className="bg-background/90 shadow-md">
       <CardHeader>
         <CardTitle>
           <Title>Part 3: Introducing Forms to Filter Books by Category</Title>

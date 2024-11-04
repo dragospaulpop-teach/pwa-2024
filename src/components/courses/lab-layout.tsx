@@ -1,5 +1,13 @@
 import { Button } from "@/components/ui/button";
 import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import {
   Sheet,
   SheetContent,
   SheetDescription,
@@ -10,7 +18,7 @@ import {
 import { cn } from "@/lib/utils";
 import { Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { ChevronLeftIcon, MenuSquareIcon } from "lucide-react";
+import { ChevronLeftIcon, FootprintsIcon, MenuSquareIcon } from "lucide-react";
 import { useState } from "react";
 
 interface Step {
@@ -342,7 +350,107 @@ const steps: CourseSteps = {
         path: "/labs/pwa/lab4/outro",
       },
     ],
+    lab5: [
+      {
+        id: "intro",
+        title: "Intro",
+        description: "Overview",
+        path: "/labs/pwa/lab5/intro",
+      },
+      {
+        id: "step1",
+        title: "Theory",
+        description: "What is Data Persistence?",
+        path: "/labs/pwa/lab5/step1",
+      },
+      {
+        id: "step2",
+        title: "Theory",
+        description: "Relational databases and SQL",
+        path: "/labs/pwa/lab5/step2",
+      },
+      {
+        id: "step3",
+        title: "Example",
+        description: "Normalization example",
+        path: "/labs/pwa/lab5/step3",
+      },
+      {
+        id: "step4",
+        title: "Example",
+        description: "Tools for Managing MySQL Databases",
+        path: "/labs/pwa/lab5/step4",
+      },
+      {
+        id: "step5",
+        title: "Example",
+        description: "Connecting PHP to MySQL Databases",
+        path: "/labs/pwa/lab5/step5",
+      },
+      {
+        id: "step6",
+        title: "Example",
+        description: "mysqli and PDO Examples",
+        path: "/labs/pwa/lab5/step6",
+      },
+      {
+        id: "step7",
+        title: "Example",
+        description: "Creating a Database",
+        path: "/labs/pwa/lab5/step7",
+      },
+      {
+        id: "step8",
+        title: "Practice",
+        description: "Updating our app files",
+        path: "/labs/pwa/lab5/step8",
+      },
+      {
+        id: "step9",
+        title: "Practice",
+        description: "Updating our index page",
+        path: "/labs/pwa/lab5/step9",
+      },
+      {
+        id: "step10",
+        title: "Practice",
+        description: "Updating our category page",
+        path: "/labs/pwa/lab5/step10",
+      },
+      {
+        id: "step11",
+        title: "Practice",
+        description: "Updating our edit page",
+        path: "/labs/pwa/lab5/step11",
+      },
+      {
+        id: "step12",
+        title: "Hands-on",
+        description: "Hands-On Exercises",
+        path: "/labs/pwa/lab5/step12",
+      },
+      {
+        id: "step13",
+        title: "Self-study",
+        description: "Self-study",
+        path: "/labs/pwa/lab5/step13",
+      },
+      {
+        id: "outro",
+        title: "Outro",
+        description: "k thx bye",
+        path: "/labs/pwa/lab5/outro",
+      },
+    ],
   },
+};
+
+const labTitles: Record<string, string> = {
+  lab1: "Lab 1: Introduction to Web Servers and PHP",
+  lab2: "Lab 2: Building a Dynamic PHP Homepage",
+  lab3: "Lab 3: Adding Categories to the Bookstore",
+  lab4: "Lab 4: User Authentication and Authorization",
+  lab5: "Lab 5: Transitioning from JSON to MySQL for data persistence",
 };
 
 interface LabLayoutProps {
@@ -399,7 +507,7 @@ export function LabLayout({ children, step, lab, course }: LabLayoutProps) {
               <Link
                 to={step.path}
                 className={cn(
-                  "grid grid-cols-[24px_1fr] items-center rounded-md bg-background p-2 text-foreground",
+                  "grid grid-cols-[24px_1fr] items-center rounded-md bg-background/90 p-2 text-foreground",
                   index < currentStepIndex && "text-foreground",
                   index === currentStepIndex &&
                     "text-foreground shadow-md outline outline-1 outline-muted-foreground",
@@ -434,6 +542,32 @@ export function LabLayout({ children, step, lab, course }: LabLayoutProps) {
         <motion.div
           layout
           className="container relative mx-auto flex flex-1 flex-col gap-4">
+          <h1 className="flex items-center justify-start text-2xl font-bold">
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild className="mx-2 cursor-pointer">
+                <div className="flex items-center gap-2">
+                  <FootprintsIcon className="h-6 w-6" />
+                </div>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                <DropdownMenuLabel>Jump to lab</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                {/* eslint-disable-next-line @typescript-eslint/no-unused-vars */}
+                {Object.entries(steps.pwa).map(([labName, _steps]) => (
+                  <Link to={`/labs/pwa/${labName}/intro`} key={labName}>
+                    <DropdownMenuItem
+                      className={cn(
+                        "cursor-pointer",
+                        lab === labName && "text-primary",
+                      )}>
+                      {labTitles[labName]}
+                    </DropdownMenuItem>
+                  </Link>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
+            {labTitles[lab]}
+          </h1>
           {children}
         </motion.div>
       </div>

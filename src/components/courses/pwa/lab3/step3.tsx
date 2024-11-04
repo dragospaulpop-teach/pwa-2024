@@ -22,7 +22,7 @@ export default function Card1() {
 </p>`;
 
   return (
-    <Card>
+    <Card className="bg-background/90 shadow-md">
       <CardHeader>
         <CardTitle>
           <Title>Part 2: Adding Links to Category Pages</Title>

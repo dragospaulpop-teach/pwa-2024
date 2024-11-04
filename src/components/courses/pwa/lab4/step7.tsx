@@ -31,7 +31,7 @@ export default function Card1() {
 <?php endforeach; ?>`;
 
   return (
-    <Card>
+    <Card className="bg-background/90 shadow-md">
       <CardHeader>
         <CardTitle>
           <Title>Practice</Title>

@@ -14,7 +14,7 @@ import { AlertCircle } from "lucide-react";
 
 export default function Intro() {
   return (
-    <Card>
+    <Card className="bg-background/90 shadow-md">
       <CardHeader>
         <CardTitle>
           <Title>Filtering data and working with Forms</Title>

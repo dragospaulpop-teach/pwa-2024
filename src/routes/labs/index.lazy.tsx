@@ -103,6 +103,28 @@ const labs: Lab[] = [
       opacity: 0.05,
     },
   },
+  {
+    id: "pwa5",
+    title: `PWA Lab 5`,
+    description:
+      "Data persistence. We talk about relational databases, normalization, sql injection and ORMs. We also use MySQL to store book data. Click to begin.",
+    image: `/labs/pwa-5.png`,
+    difficulty: "Beginner",
+    link: "/labs/pwa/lab5/intro",
+    note: (
+      <a
+        target="_blank"
+        className="my-2 text-xs italic text-muted-foreground"
+        href="https://www.vecteezy.com/free-vector/database">
+        Database Vectors by Vecteezy
+      </a>
+    ),
+    style: {
+      scale: 0.95,
+      y: Math.random() * 1500 + 250,
+      opacity: 0.05,
+    },
+  },
 ];
 
 function Labs() {

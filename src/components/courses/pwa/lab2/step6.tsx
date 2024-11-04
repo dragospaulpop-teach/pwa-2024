@@ -14,7 +14,7 @@ import { Lightbulb } from "lucide-react";
 
 export default function Card16() {
   return (
-    <Card className="bg-background/75 shadow-md">
+    <Card className="bg-background/90 shadow-md">
       <CardHeader>
         <CardTitle>
           <Title>Practice</Title>

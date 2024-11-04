@@ -46,7 +46,7 @@ export default function Card1() {
 ]`;
 
   return (
-    <Card>
+    <Card className="bg-background/90 shadow-md">
       <CardHeader>
         <CardTitle>
           <Title>Part 1: Adding Categories to the Books</Title>

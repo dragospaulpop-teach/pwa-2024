@@ -10,7 +10,7 @@ import {
 
 export default function Intro() {
   return (
-    <Card>
+    <Card className="bg-background/90 shadow-md">
       <CardHeader>
         <CardTitle>
           <Title>That's it. It's done.</Title>
