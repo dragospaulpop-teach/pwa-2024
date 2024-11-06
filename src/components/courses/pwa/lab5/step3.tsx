@@ -3,6 +3,7 @@ import Subtitle from "@/components/subtitle";
 import Table from "@/components/table";
 import TablesCard from "@/components/tables-card";
 import Title from "@/components/title";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
 import {
   Card,
@@ -13,16 +14,22 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import UnorderedList from "@/components/unordered-list";
+import { AlertCircleIcon, KeyRoundIcon } from "lucide-react";
 
 export default function Card1() {
   const tables = {
     unnormalizedBooks: [
       {
         headers: [
-          "book_id",
-          "title",
+          <div className="flex items-center gap-2 text-amber-500">
+            <KeyRoundIcon className="h-4 w-4" color="currentColor" />
+            title
+          </div>,
+          <div className="flex items-center gap-2 text-amber-500">
+            <KeyRoundIcon className="h-4 w-4" color="currentColor" />
+            author
+          </div>,
           "categories",
-          "author",
           "author_bio",
           "publisher",
           "publisher_address",
@@ -30,30 +37,27 @@ export default function Card1() {
         ],
         data: [
           [
-            "1",
             "The Great Gatsby",
-            "Fiction, Classic",
             "F. Scott Fitzgerald",
+            "Fiction, Classic",
             "American novelist, 1896-1940",
             "Scribner",
             "123 Main St, New York",
             "10.99",
           ],
           [
-            "2",
             "1984",
-            "Dystopian, Fiction",
             "George Orwell",
+            "Dystopian, Fiction",
             "British writer, 1903-1950",
             "Secker & Warburg",
             "456 West St, London",
             "8.99",
           ],
           [
-            "3",
             "To Kill a Mockingbird",
-            "Fiction, Legal",
             "Harper Lee",
+            "Fiction, Legal",
             "American novelist, 1926-2016",
             "J.B. Lippincott & Co.",
             "789 East St, Philadelphia",
@@ -66,9 +70,14 @@ export default function Card1() {
     nf1: [
       {
         headers: [
-          "book_id",
-          "title",
-          "author",
+          <div className="flex items-center gap-2 text-amber-500">
+            <KeyRoundIcon className="h-4 w-4" color="currentColor" />
+            title
+          </div>,
+          <div className="flex items-center gap-2 text-amber-500">
+            <KeyRoundIcon className="h-4 w-4" color="currentColor" />
+            author
+          </div>,
           "author_bio",
           "publisher",
           "publisher_address",
@@ -76,7 +85,6 @@ export default function Card1() {
         ],
         data: [
           [
-            "1",
             "The Great Gatsby",
             "F. Scott Fitzgerald",
             "American novelist, 1896-1940",
@@ -85,7 +93,6 @@ export default function Card1() {
             "10.99",
           ],
           [
-            "2",
             "1984",
             "George Orwell",
             "British writer, 1903-1950",
@@ -94,7 +101,6 @@ export default function Card1() {
             "8.99",
           ],
           [
-            "3",
             "To Kill a Mockingbird",
             "Harper Lee",
             "American novelist, 1926-2016",
@@ -106,7 +112,13 @@ export default function Card1() {
         caption: "Books Table in 1NF",
       },
       {
-        headers: ["category_id", "category_name"],
+        headers: [
+          <div className="flex items-center gap-2 text-amber-500">
+            <KeyRoundIcon className="h-4 w-4" color="currentColor" />
+            category_id
+          </div>,
+          "category_name",
+        ],
         data: [
           ["1", "Fiction"],
           ["2", "Classic"],
@@ -116,14 +128,27 @@ export default function Card1() {
         caption: "Categories Table",
       },
       {
-        headers: ["book_id", "category_id"],
+        headers: [
+          <div className="flex items-center gap-2 text-blue-500">
+            <KeyRoundIcon className="h-4 w-4" color="currentColor" />
+            title
+          </div>,
+          <div className="flex items-center gap-2 text-blue-500">
+            <KeyRoundIcon className="h-4 w-4" color="currentColor" />
+            author
+          </div>,
+          <div className="flex items-center gap-2 text-blue-500">
+            <KeyRoundIcon className="h-4 w-4" color="currentColor" />
+            category_id
+          </div>,
+        ],
         data: [
-          ["1", "1"],
-          ["1", "2"],
-          ["2", "1"],
-          ["2", "3"],
-          ["3", "1"],
-          ["3", "4"],
+          ["The Great Gatsby", "F. Scott Fitzgerald", "1"],
+          ["The Great Gatsby", "F. Scott Fitzgerald", "2"],
+          ["1984", "George Orwell", "1"],
+          ["1984", "George Orwell", "3"],
+          ["To Kill a Mockingbird", "Harper Lee", "1"],
+          ["To Kill a Mockingbird", "Harper Lee", "4"],
         ],
         caption: "Book_Categories Join Table",
       },
@@ -131,9 +156,15 @@ export default function Card1() {
     nf2: [
       {
         headers: [
-          "book_id",
+          <div className="flex items-center gap-2 text-amber-500">
+            <KeyRoundIcon className="h-4 w-4" color="currentColor" />
+            book_id
+          </div>,
           "title",
-          "author_id",
+          <div className="flex items-center gap-2 text-blue-500">
+            <KeyRoundIcon className="h-4 w-4" color="currentColor" />
+            author_id
+          </div>,
           "publisher",
           "publisher_address",
           "price",
@@ -160,7 +191,14 @@ export default function Card1() {
         caption: "Books Table in 2NF",
       },
       {
-        headers: ["author_id", "author", "author_bio"],
+        headers: [
+          <div className="flex items-center gap-2 text-amber-500">
+            <KeyRoundIcon className="h-4 w-4" color="currentColor" />
+            author_id
+          </div>,
+          "author",
+          "author_bio",
+        ],
         data: [
           ["1", "F. Scott Fitzgerald", "American novelist, 1896-1940"],
           ["2", "George Orwell", "British writer, 1903-1950"],
@@ -171,7 +209,22 @@ export default function Card1() {
     ],
     nf3: [
       {
-        headers: ["book_id", "title", "author_id", "publisher_id", "price"],
+        headers: [
+          <div className="flex items-center gap-2 text-amber-500">
+            <KeyRoundIcon className="h-4 w-4" color="currentColor" />
+            book_id
+          </div>,
+          "title",
+          <div className="flex items-center gap-2 text-blue-500">
+            <KeyRoundIcon className="h-4 w-4" color="currentColor" />
+            author_id
+          </div>,
+          <div className="flex items-center gap-2 text-blue-500">
+            <KeyRoundIcon className="h-4 w-4" color="currentColor" />
+            publisher_id
+          </div>,
+          "price",
+        ],
         data: [
           ["1", "The Great Gatsby", "1", "1", "10.99"],
           ["2", "1984", "2", "2", "8.99"],
@@ -180,7 +233,109 @@ export default function Card1() {
         caption: "Books Table in 3NF",
       },
       {
-        headers: ["publisher_id", "publisher_name", "publisher_address"],
+        headers: [
+          <div className="flex items-center gap-2 text-amber-500">
+            <KeyRoundIcon className="h-4 w-4" color="currentColor" />
+            publisher_id
+          </div>,
+          "publisher_name",
+          "publisher_address",
+        ],
+        data: [
+          ["1", "Scribner", "123 Main St, New York"],
+          ["2", "Secker & Warburg", "456 West St, London"],
+          ["3", "J.B. Lippincott & Co.", "789 East St, Philadelphia"],
+        ],
+        caption: "Publishers Table",
+      },
+    ],
+    final: [
+      {
+        headers: [
+          <div className="flex items-center gap-2 text-amber-500">
+            <KeyRoundIcon className="h-4 w-4" color="currentColor" />
+            book_id
+          </div>,
+          "title",
+          <div className="flex items-center gap-2 text-blue-500">
+            <KeyRoundIcon className="h-4 w-4" color="currentColor" />
+            author_id
+          </div>,
+          <div className="flex items-center gap-2 text-blue-500">
+            <KeyRoundIcon className="h-4 w-4" color="currentColor" />
+            publisher_id
+          </div>,
+          "price",
+        ],
+        data: [
+          ["1", "The Great Gatsby", "1", "1", "10.99"],
+          ["2", "1984", "2", "2", "8.99"],
+          ["3", "To Kill a Mockingbird", "3", "3", "12.50"],
+        ],
+        caption: "Books Table in 3NF",
+      },
+      {
+        headers: [
+          <div className="flex items-center gap-2 text-amber-500">
+            <KeyRoundIcon className="h-4 w-4" color="currentColor" />
+            category_id
+          </div>,
+          "category_name",
+        ],
+        data: [
+          ["1", "Fiction"],
+          ["2", "Classic"],
+          ["3", "Dystopian"],
+          ["4", "Legal"],
+        ],
+        caption: "Categories Table",
+      },
+      {
+        headers: [
+          <div className="flex items-center gap-2 text-blue-500">
+            <KeyRoundIcon className="h-4 w-4" color="currentColor" />
+            book_id
+          </div>,
+          <div className="flex items-center gap-2 text-blue-500">
+            <KeyRoundIcon className="h-4 w-4" color="currentColor" />
+            category_id
+          </div>,
+        ],
+        data: [
+          [1, "1"],
+          [1, "2"],
+          [2, "1"],
+          [2, "3"],
+          [3, "1"],
+          [3, "4"],
+        ],
+        caption: "Book_Categories Join Table",
+      },
+      {
+        headers: [
+          <div className="flex items-center gap-2 text-amber-500">
+            <KeyRoundIcon className="h-4 w-4" color="currentColor" />
+            author_id
+          </div>,
+          "author",
+          "author_bio",
+        ],
+        data: [
+          ["1", "F. Scott Fitzgerald", "American novelist, 1896-1940"],
+          ["2", "George Orwell", "British writer, 1903-1950"],
+          ["3", "Harper Lee", "American novelist, 1926-2016"],
+        ],
+        caption: "Authors Table",
+      },
+      {
+        headers: [
+          <div className="flex items-center gap-2 text-amber-500">
+            <KeyRoundIcon className="h-4 w-4" color="currentColor" />
+            publisher_id
+          </div>,
+          "publisher_name",
+          "publisher_address",
+        ],
         data: [
           ["1", "Scribner", "123 Main St, New York"],
           ["2", "Secker & Warburg", "456 West St, London"],
@@ -219,6 +374,45 @@ export default function Card1() {
           table. This structure has redundancy and nested fields, which we’ll
           address in the normalization process.
         </Paragraph>
+        <Alert className="mb-2">
+          <AlertCircleIcon className="h-4 w-4" />
+          <AlertTitle>Info</AlertTitle>
+          <AlertDescription>
+            To make the example easier to understand, we'll use the same data as
+            in our <Badge variant="secondary">books.json</Badge> file, but with
+            a few edits.
+          </AlertDescription>
+          <AlertDescription>
+            I have added the <Badge variant="secondary">author_bio</Badge>, the{" "}
+            <Badge variant="secondary">publisher</Badge> and the{" "}
+            <Badge variant="secondary">publisher_address</Badge> columns.
+          </AlertDescription>
+          <AlertDescription>
+            I have also turned the <Badge variant="secondary">category</Badge>
+            column into a list of categories and named it{" "}
+            <Badge variant="secondary">categories</Badge>.
+          </AlertDescription>
+        </Alert>
+
+        <Alert className="mb-2">
+          <AlertCircleIcon className="h-4 w-4" />
+          <AlertTitle>Info</AlertTitle>
+          <AlertDescription>
+            I have used these symbols to designate keys:
+          </AlertDescription>
+          <AlertDescription>
+            <div className="flex items-center gap-2 text-amber-500">
+              <KeyRoundIcon className="h-4 w-4" />
+              Primary Key
+            </div>
+          </AlertDescription>
+          <AlertDescription>
+            <div className="flex items-center gap-2 text-blue-500">
+              <KeyRoundIcon className="h-4 w-4" />
+              Foreign Key
+            </div>
+          </AlertDescription>
+        </Alert>
         <TablesCard>
           {tables.unnormalizedBooks.map((table, index) => (
             <Table
@@ -279,15 +473,26 @@ export default function Card1() {
         </Paragraph>
         <Paragraph>
           For 2NF, a table must already be in 1NF, and all non-key columns
-          should depend on the entire primary key. Since our books table doesn’t
-          have a composite primary key, 2NF applies when considering tables that
-          may need further decomposition.
+          should depend on the entire primary key. Since our books table has a
+          composite primary key (<Badge variant="secondary">book_id</Badge> and{" "}
+          <Badge variant="secondary">author_id</Badge>), the{" "}
+          <Badge variant="secondary">author_bio</Badge> column doesn't depend on
+          the entire primary key but only on part of it (
+          <Badge variant="secondary">author</Badge>).
         </Paragraph>
         <Paragraph>
-          Here, the author details (author and author_bio) repeat across
-          multiple books. To remove this partial dependency, we’ll create an
-          Authors table with unique author details and use author_id in the
-          books table.
+          We have 2 options to solve 2NF:
+          <UnorderedList inside={true}>
+            <li>
+              We can create an atomic primary key in the{" "}
+              <Badge variant="secondary">books</Badge> table.
+            </li>
+            <li>
+              We can create a new <Badge variant="secondary">Authors</Badge>
+              table and use <Badge variant="secondary">author_id</Badge> as a
+              foreign key in the <Badge variant="secondary">books</Badge> table.
+            </li>
+          </UnorderedList>
         </Paragraph>
         <TablesCard>
           {tables.nf2.map((table, index) => (
@@ -353,6 +558,19 @@ export default function Card1() {
             </li>
           </UnorderedList>
         </Paragraph>
+        <Paragraph>
+          <strong>Final Result:</strong>
+        </Paragraph>
+        <TablesCard>
+          {tables.final.map((table, index) => (
+            <Table
+              key={index}
+              headers={table.headers}
+              data={table.data}
+              caption={table.caption}
+            />
+          ))}
+        </TablesCard>
       </CardContent>
       <CardFooter></CardFooter>
     </Card>

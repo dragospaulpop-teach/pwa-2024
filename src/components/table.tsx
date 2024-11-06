@@ -3,8 +3,8 @@ export default function Table({
   data,
   caption,
 }: {
-  headers: string[];
-  data: string[][];
+  headers: (string | React.ReactNode)[];
+  data: string[][] | (string | number)[][];
   caption?: string;
 }) {
   return (

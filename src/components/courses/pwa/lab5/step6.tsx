@@ -238,6 +238,7 @@ try {
             <Badge variant="secondary">PDO</Badge> with prepared statements
           </strong>
         </Paragraph>
+        <Code code={code.pdo_prepared} language="php"></Code>
         <Alert>
           <AlertCircleIcon className="h-4 w-4" />
           <AlertTitle>Heads up!</AlertTitle>
