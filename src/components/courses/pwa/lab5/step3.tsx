@@ -445,6 +445,31 @@ export default function Card1() {
           ))}
         </TablesCard>
 
+        <Alert className="my-2">
+          <AlertCircleIcon className="h-4 w-4" />
+          <AlertTitle>Info</AlertTitle>
+          <AlertDescription>
+            When we have a many-to-many relationship and we use a join table
+            (like
+            <Badge variant="secondary">Book_Categories</Badge>), we need to
+            create a composite primary key made up of all the foreign keys (in
+            this case the primary key is made up of the combo of{" "}
+            <div className="inline-flex items-center gap-2 rounded-md border border-amber-500 p-2">
+              <div className="flex items-center gap-2 text-amber-500">
+                <KeyRoundIcon className="h-4 w-4" color="currentColor" />
+                title
+              </div>
+              <div className="flex items-center gap-2 text-amber-500">
+                <KeyRoundIcon className="h-4 w-4" color="currentColor" />
+                author
+              </div>
+              <div className="flex items-center gap-2 text-amber-500">
+                <KeyRoundIcon className="h-4 w-4" color="currentColor" />
+                category_id
+              </div>
+            </div>
+          </AlertDescription>
+        </Alert>
         <Paragraph>
           Changes to Achieve 1NF:
           <UnorderedList inside={true}>
