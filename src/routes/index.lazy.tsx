@@ -12,6 +12,7 @@ import { createLazyFileRoute, Link } from "@tanstack/react-router";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import {
   BicepsFlexedIcon,
+  BookIcon,
   FilmIcon,
   LibraryIcon,
   MonitorPlayIcon,
@@ -62,6 +63,28 @@ const items: Items = {
       ),
       label: "Watch video",
       target: "_blank",
+      style: {
+        scale: 0.95,
+        y: Math.random() * 1500 + 250,
+        opacity: 0.05,
+      },
+    },
+    {
+      id: "diploma",
+      icon: null,
+      title: "Diploma mentorship program",
+      description: "Some info on the mentorship program for the diploma exam.",
+      personal: "Read this very carefully.",
+      difficulty: null,
+      date: new Date("2024-10-27"),
+      url: "/news/diploma",
+      target: "_self",
+      btnIcon: (
+        <span className="mr-2 text-primary/75">
+          <BookIcon className="h-6 w-6" color="currentColor" />
+        </span>
+      ),
+      label: "Read article",
       style: {
         scale: 0.95,
         y: Math.random() * 1500 + 250,

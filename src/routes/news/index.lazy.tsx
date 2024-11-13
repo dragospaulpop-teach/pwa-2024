@@ -8,9 +8,10 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
+import { cn } from "@/lib/utils";
 import { createLazyFileRoute, Link } from "@tanstack/react-router";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
-import { MonitorPlayIcon } from "lucide-react";
+import { BookIcon, MonitorPlayIcon } from "lucide-react";
 import { useRef } from "react";
 
 interface NewsItem {
@@ -45,6 +46,25 @@ const news: NewsItem[] = [
     link: "https://www.youtube.com/watch?v=3dgUiF2a3pM",
     type: "video",
     label: "Watch video",
+    style: {
+      scale: 0.95,
+      y: Math.random() * 1500 + 250,
+      opacity: 0.05,
+    },
+  },
+  {
+    id: 2,
+    title: "Diploma mentorship program",
+    description: "Some info on the mentorship program for the diploma exam.",
+    image: "/news/diploma.webp",
+    published: new Date("2024-10-27").toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    }),
+    link: "/news/diploma",
+    type: "article",
+    label: "Read article",
     style: {
       scale: 0.95,
       y: Math.random() * 1500 + 250,
@@ -198,14 +218,24 @@ function NewsItem({ item }: { item: NewsItem }) {
           <div className="flex-1"></div>
         </CardContent>
         <CardFooter>
-          <Link to={item.link} target="_blank" className="w-full">
+          <Link
+            to={item.link}
+            target={item.type === "article" ? "_self" : "_blank"}
+            className="w-full">
             <Button variant="outline" className="w-full">
-              <span className="text-destructive/75">
+              <span
+                className={cn(
+                  "text-destructive/75",
+                  item.type === "article" && "text-primary/75",
+                )}>
                 {item.type === "video" && (
                   <MonitorPlayIcon
                     className="mr-2 h-6 w-6"
                     color="currentColor"
                   />
+                )}
+                {item.type === "article" && (
+                  <BookIcon className="mr-2 h-6 w-6" color="currentColor" />
                 )}
               </span>
               {item.label}
