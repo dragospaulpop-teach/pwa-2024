@@ -442,6 +442,20 @@ const steps: CourseSteps = {
         path: "/labs/pwa/lab5/outro",
       },
     ],
+    labErrata1: [
+      {
+        id: "intro",
+        title: "Intro",
+        description: "Overview",
+        path: "/labs/pwa/labErrata1/intro",
+      },
+      {
+        id: "outro",
+        title: "Outro",
+        description: "k thx bye",
+        path: "/labs/pwa/labErrata1/outro",
+      },
+    ],
   },
 };
 

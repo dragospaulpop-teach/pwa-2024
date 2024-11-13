@@ -125,6 +125,28 @@ const labs: Lab[] = [
       opacity: 0.05,
     },
   },
+  {
+    id: "pwa-errata-1",
+    title: `PWA Errata 1`,
+    description:
+      "Found a bug in file uploading. Check out what you need to do to fix it.",
+    image: `/labs/pwa-errata-1.webp`,
+    difficulty: "Beginner",
+    link: "/labs/pwa/labErrata1/intro",
+    note: (
+      <a
+        target="_blank"
+        className="my-2 text-xs italic text-muted-foreground"
+        href="https://www.vecteezy.com/free-vector/error">
+        Database Vectors by Vecteezy
+      </a>
+    ),
+    style: {
+      scale: 0.95,
+      y: Math.random() * 1500 + 250,
+      opacity: 0.05,
+    },
+  },
 ];
 
 function Labs() {

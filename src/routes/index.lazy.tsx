@@ -207,6 +207,29 @@ const items: Items = {
         opacity: 0.05,
       },
     },
+    {
+      id: "pwa-lab-errata-1",
+      icon: null,
+      title: "PWA Lab Errata 1",
+      description:
+        "Whoops. File upload silently fails when we update a book cover.",
+      personal: null,
+      difficulty: "Beginner",
+      date: null,
+      url: "/labs/pwa/labErrata1/intro",
+      target: "_self",
+      btnIcon: (
+        <span className="mr-2 text-primary/75">
+          <BicepsFlexedIcon className="h-6 w-6" color="currentColor" />
+        </span>
+      ),
+      label: "Start Lab",
+      style: {
+        scale: 0.95,
+        y: Math.random() * 1500 + 250,
+        opacity: 0.05,
+      },
+    },
   ],
   resources: [
     {
