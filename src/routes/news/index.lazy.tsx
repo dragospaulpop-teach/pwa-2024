@@ -57,7 +57,7 @@ const news: NewsItem[] = [
     title: "Diploma mentorship program",
     description: "Some info on the mentorship program for the diploma exam.",
     image: "/news/diploma.webp",
-    published: new Date("2024-10-27").toLocaleDateString("en-US", {
+    published: new Date("2024-11-13").toLocaleDateString("en-US", {
       year: "numeric",
       month: "long",
       day: "numeric",
@@ -65,6 +65,26 @@ const news: NewsItem[] = [
     link: "/news/diploma",
     type: "article",
     label: "Read article",
+    style: {
+      scale: 0.95,
+      y: Math.random() * 1500 + 250,
+      opacity: 0.05,
+    },
+  },
+  {
+    id: 3,
+    title: "New AI code editor from the guys behind Codeium",
+    description:
+      "A new AI code editor called Windsurf is out. It's a built by the guys behind Codeium (a free Copilot alternative). I prefer using Cursor (which is a paid tool), but this is a nice alternative. Watch Theo play with this in the video below.",
+    image: "/news/windsurf.webp",
+    published: new Date("2024-11-15").toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    }),
+    link: "https://www.youtube.com/watch?v=FqbMXtxDZYc",
+    type: "video",
+    label: "Watch video",
     style: {
       scale: 0.95,
       y: Math.random() * 1500 + 250,

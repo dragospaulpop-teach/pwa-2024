@@ -76,9 +76,32 @@ const items: Items = {
       description: "Some info on the mentorship program for the diploma exam.",
       personal: "Read this very carefully.",
       difficulty: null,
-      date: new Date("2024-10-27"),
+      date: new Date("2024-11-13"),
       url: "/news/diploma",
       target: "_self",
+      btnIcon: (
+        <span className="mr-2 text-primary/75">
+          <BookIcon className="h-6 w-6" color="currentColor" />
+        </span>
+      ),
+      label: "Read article",
+      style: {
+        scale: 0.95,
+        y: Math.random() * 1500 + 250,
+        opacity: 0.05,
+      },
+    },
+    {
+      id: "windsurf",
+      icon: null,
+      title: "New AI code editor from the guys behind Codeium",
+      description:
+        "A new AI code editor called Windsurf is out. It's a built by the guys behind Codeium (a free Copilot alternative). I prefer using Cursor (which is a paid tool), but this is a nice alternative. Watch Theo play with this in the video below.",
+      personal: "Get familiar with AI tools.",
+      difficulty: null,
+      date: new Date("2024-11-15"),
+      url: "https://www.youtube.com/watch?v=FqbMXtxDZYc",
+      target: "_blank",
       btnIcon: (
         <span className="mr-2 text-primary/75">
           <BookIcon className="h-6 w-6" color="currentColor" />
