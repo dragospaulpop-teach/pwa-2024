@@ -111,6 +111,22 @@ const resources: Resources = {
         opacity: 0.05,
       },
     },
+    {
+      id: "git-full-course",
+      title: "Git Full Course",
+      description:
+        "A full course on Git and GitHub. This is a great resource from Boot.dev and The Primeagen. Even if you already know Git, watch this video. Get in the habbit of consuming content from Theo and The Primeagen. It will help you stay on top of the tech scene.",
+      image: "/resources/git-full-course.webp",
+      link: "https://www.youtube.com/watch?v=rH3zE7VlIMs",
+      target: "_blank",
+      type: "video",
+      label: "Watch video",
+      style: {
+        scale: 0.95,
+        y: Math.random() * 1500 + 250,
+        opacity: 0.05,
+      },
+    },
   ],
   howTos: [
     {
